@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem;
+  }
+  
+  .navList {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navLink {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .navLink:hover {
+    color: #f0a500;
+  }
+  
+  .cartCount {
+    background-color: #f0a500;
+    color: #333;
+    padding: 0.2rem 0.5rem;
+    border-radius: 50%;
+  }
+  
