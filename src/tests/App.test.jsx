@@ -1,25 +1,24 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import App from '../App';
 
-describe('something truthy and falsy', () => {
-  it('true to be true', () => {
-    expect(true).toBe(true);
-  });
+describe('App Component', () => {
+  it('renders Navbar and routes correctly', () => {
+    // Wrap the App component with BrowserRouter
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
 
-  it('false to be false', () => {
-    expect(false).toBe(false);
-  });
+    // Check if Navbar is rendered
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
 
-  
+    // Check if "Home" link in Navbar is rendered
+    expect(screen.getByText(/home/i)).toBeInTheDocument();
+
+    // Check if the default route renders the HomePage
+    expect(screen.getByText(/Welcome to Our Store!/i)).toBeInTheDocument();
+  });
 });
-
-describe('App', () => {
-    it('renders headline', () => {
-      render(<App title="React" />);
-  
-      screen.debug();
-  
-      // check if App components renders headline
-    });
-  });

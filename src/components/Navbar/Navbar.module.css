@@ -25,9 +25,23 @@
   }
   
   .cartCount {
-    background-color: #f0a500;
-    color: #333;
-    padding: 0.2rem 0.5rem;
-    border-radius: 50%;
+    background-color: red; /* Badge background */
+    color: white; /* Badge text color */
+    font-size: .8rem; /* Slightly smaller text */
+    font-weight: bold; /* Bold text */
+    width: 1.2rem; /* Fixed width */
+    height: 1.2rem; /* Fixed height */
+    display: flex; /* Center content */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Circular shape */
+    position: absolute; /* Position relative to the nav link */
+    top: -0.5rem; /* Adjust the badge above the nav link */
+    right: -1.8rem; /* Adjust the badge to the right of the nav link */
+   
+    z-index: 10; /* Ensure it appears above other elements */
   }
   
+  .navLink {
+    position: relative; /* Set positioning context for the badge */
+  }

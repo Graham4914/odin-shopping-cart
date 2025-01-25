@@ -1,57 +1,96 @@
+/* ProductCard.module.css */
 .productCard {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
+  width: 100%; /* Adjust to grid cell width */
+  max-width: 250px; /* Prevent cards from being too large */
+  background-color: #f9f9f9; /* Subtle background */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden; /* Contain content */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.productImage {
+  width: 100%; /* Ensure image fills the width of the card */
+  height: 150px; /* Fixed height */
+  object-fit: cover; /* Prevent distortion */
+  border-radius: 8px;
+}
+
+.productTitle {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.productPrice {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
   
-  .productImage {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-  
-  .productTitle {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #333;
-  }
-  
-  .productPrice {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: #666;
-  }
-  
-  .actions {
+
+  .quantityControls {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .decrementButton,
+  .incrementButton {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    line-height: 28px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .decrementButton:disabled {
+    cursor: not-allowed;
+    background-color: #e0e0e0;
+  }
+  
+  .incrementButton:hover,
+  .decrementButton:hover:not(:disabled) {
+    background-color: #ddd;
   }
   
   .quantityInput {
-    width: 60px;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: 50px;
     text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
   }
   
   .addToCartButton {
-    padding: 0.5rem 1rem;
-    background-color: #f0a500;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
     border: none;
     border-radius: 4px;
-    color: white;
-    font-weight: bold;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
   }
   
   .addToCartButton:hover {
-    background-color: #d48b00;
+    background-color: #218838;
   }
-  

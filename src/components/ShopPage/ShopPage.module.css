@@ -1,9 +1,10 @@
 .shopPage {
-    text-align: center;
-    padding: 2rem;
-    background-color: #fff;
-    color: #333;
-  }
+  display: flex;
+  margin-left: 250px; /* Adjust for the sidebar width */
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
   
   .heading {
     font-size: 2.5rem;
@@ -15,3 +16,10 @@
     color: #666;
   }
   
+  /* ShopPage.module.css */
+  .productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+  }
