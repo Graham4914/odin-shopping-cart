@@ -7,20 +7,20 @@ import { fetchProducts } from '../../utils/api';
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [filters, setFilters] = useState({ category: '', priceRange: [0, 100] });
+  const [filters, setFilters] = useState({ categories: [], priceRange: [0, Infinity] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const categories = ['Men\'s Clothing', 'Women\'s Clothing', 'Jewelry', 'Electronics'];
 
   useEffect(() => {
     const loadProducts = async () => {
       const result = await fetchProducts();
-      console.log("Fetched Products:", result); // Log the result for debugging
-      
       if (result.error) {
         setError(result.error);
       } else {
         setProducts(result);
-        setFilteredProducts(result);
+        setFilteredProducts(result); // Show all products initially
       }
       setLoading(false);
     };
@@ -32,44 +32,40 @@ const ShopPage = () => {
     const applyFilters = () => {
       let updatedProducts = [...products];
 
-    
-    // Filter by category
-    if (filters.category && filters.category !== "all") {
-      updatedProducts = updatedProducts.filter(
-        (product) => product.category === filters.category
-      );
-    }
+      // Filter by categories
+      if (filters.categories.length > 0) {
+        updatedProducts = updatedProducts.filter((product) =>
+          filters.categories.some((category) =>
+            category.toLowerCase() === product.category.toLowerCase()
+          )
+        );
+      }
 
-    // Filter by price range
-    if (filters.priceRange[0] !== 0 || filters.priceRange[1] !== Infinity) {
+      // Filter by price range
       updatedProducts = updatedProducts.filter(
         (product) =>
           product.price >= filters.priceRange[0] &&
           product.price <= filters.priceRange[1]
       );
-    }
 
-    setFilteredProducts(updatedProducts);
-  };
+      setFilteredProducts(updatedProducts);
+    };
 
-
-  applyFilters();
-}, [filters, products]);
-
+    applyFilters();
+  }, [filters, products]);
 
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters);
   };
 
   const handleResetFilters = () => {
-    setFilters({ category: '', priceRange: [0, 100] });
+    setFilters({ categories: [], priceRange: [0, Infinity] });
   };
 
-
-
-
-
-
+  const selectedCategoryText =
+    filters.categories.length > 0
+      ? filters.categories.join(', ')
+      : 'All Products';
 
   if (loading) {
     return <p className={styles.loading}>Loading products...</p>;
@@ -79,15 +75,21 @@ const ShopPage = () => {
     return <p className={styles.error}>Failed to load products: {error}</p>;
   }
 
-
-
   return (
     <div className={styles.shopPage}>
-      <h1 className={styles.heading}>Shop</h1>
+      {/* Banner */}
+      <div className={styles.banner}>
+        <h1>{selectedCategoryText}</h1>
+      </div>
+
+      {/* Filter Panel */}
       <FilterPanel
+        categories={categories}
         onApplyFilters={handleApplyFilters}
         onResetFilters={handleResetFilters}
       />
+
+      {/* Product List */}
       <div className={styles.productList}>
         {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />

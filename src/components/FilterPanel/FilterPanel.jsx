@@ -1,70 +1,84 @@
 import React, { useState } from 'react';
 import styles from './FilterPanel.module.css';
 
-const FilterPanel = ({ onApplyFilters, onResetFilters }) => {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [priceRange, setPriceRange] = useState([0, 100]); // Example range: $0 to $100
+const FilterPanel = ({ categories = [], onApplyFilters, onResetFilters }) => {
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedPriceRange, setSelectedPriceRange] = useState([0, Infinity]);
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
+  const handleCategoryChange = (category) => {
+    const updatedCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter((item) => item !== category) // Remove category if already selected
+      : [...selectedCategories, category]; // Add category if not selected
+
+    setSelectedCategories(updatedCategories);
+    onApplyFilters({ categories: updatedCategories, priceRange: selectedPriceRange });
   };
 
-  const handlePriceRangeChange = (e) => {
-    const value = e.target.value;
-    if (value === "all") {
-      setPriceRange([0, Infinity]); // Show all products
-    } else {
-      const [min, max] = value.split('-').map(Number);
-      setPriceRange([min, max]);
-    }
-  };
-
-  const applyFilters = () => {
-    onApplyFilters({ category: selectedCategory, priceRange });
+  const handlePriceRangeChange = (range) => {
+    setSelectedPriceRange(range);
+    onApplyFilters({ categories: selectedCategories, priceRange: range });
   };
 
   return (
     <div className={styles.filterPanel}>
-      <h2 className={styles.heading}>Filters</h2>
+      <h3 className={styles.filterHeading}>Filters</h3>
 
       {/* Category Filter */}
-      <div className={styles.filterGroup}>
-        <label htmlFor="category" className={styles.label}>Category</label>
-        <select
-          id="category"
-          value={selectedCategory}
-          onChange={handleCategoryChange}
-          className={styles.select}
-        >
-            <option value="">All</option>
-            <option value="electronics">Electronics</option>
-            <option value="men's clothing">Men's Clothing</option>
-            <option value="women's clothing">Women's Clothing</option>
-            <option value="jewelery">Jewelery</option>
-        </select>
+      <div className={styles.filterSection}>
+        <h4 className={styles.filterLabel}>Category</h4>
+        <ul className={styles.filterList}>
+          {categories.map((category) => (
+            <li key={category} className={styles.filterItem}>
+              <label>
+                <input
+                  type="checkbox"
+                  value={category}
+                  checked={selectedCategories.includes(category)}
+                  onChange={() => handleCategoryChange(category)}
+                />
+                {category}
+              </label>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Price Range Filter */}
-      <div className={styles.filterGroup}>
-        <label htmlFor="priceRange" className={styles.label}>Price Range</label>
-        <select
-          id="priceRange"
-          value={priceRange.join('-')}
-          onChange={handlePriceRangeChange}
-          className={styles.select}
-        >
-            <option value="all">All</option>
-            <option value="0-100">$0 - $100</option>
-            <option value="100-500">$100 - $500</option>
-            <option value="500-1000">$500 - $1000</option>
-        </select>
+      <div className={styles.filterSection}>
+        <h4 className={styles.filterLabel}>Price Range</h4>
+        <ul className={styles.filterList}>
+          {[
+            [0, Infinity], // "All prices"
+            [0, 50], // "$0 - $50"
+            [50, 100], // "$50 - $100"
+            [100, 200], // "$100 - $200"
+            [200, Infinity], // "$200+"
+          ].map((range) => (
+            <li key={range.toString()} className={styles.filterItem}>
+              <label>
+                <input
+                  type="radio"
+                  name="priceRange"
+                  value={range}
+                  checked={
+                    selectedPriceRange[0] === range[0] &&
+                    selectedPriceRange[1] === range[1]
+                  }
+                  onChange={() => handlePriceRangeChange(range)}
+                />
+                {range[1] === Infinity
+                  ? `$${range[0]}+`
+                  : `$${range[0]} - $${range[1]}`}
+              </label>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* Actions */}
-      <div className={styles.actions}>
-        <button onClick={applyFilters} className={styles.applyButton}>Apply Filters</button>
-        <button onClick={onResetFilters} className={styles.resetButton}>Reset</button>
-      </div>
+      {/* Reset Filters Button */}
+      <button className={styles.resetButton} onClick={onResetFilters}>
+        Reset Filters
+      </button>
     </div>
   );
 };

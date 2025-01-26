@@ -1,70 +1,104 @@
 .filterPanel {
-    position: fixed;
-    left: 0;
-    top: 60px; /* Adjust for navbar height */
-    height: calc(100% - 60px); /* Prevent overlap with navbar */
-    width: 250px;
-    background-color: #f8f9fa;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    z-index: 1000;
-  }
-  
-  .heading {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .filterGroup {
-    margin-bottom: 20px;
-  }
-  
-  .label {
-    display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
-  
-  .select {
-    width: 100%;
-    padding: 8px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-  }
-  
-  .actions {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .applyButton {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .applyButton:hover {
-    background-color: #218838;
-  }
-  
-  .resetButton {
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .resetButton:hover {
-    background-color: #c82333;
-  }
-  
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: calc(100% - 60px);
+  width: 200px; /* Adjusted width */
+  background-color: #f8f9fa;
+  padding: 15px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+
+/* Heading Styles */
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Filter Group Styling */
+.filterGroup {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* Filter List Styling */
+.filterList {
+  list-style: none; /* Removes bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center; /* Align checkbox and label text */
+  margin-bottom: 10px; /* Space between items */
+}
+
+.filterItem label {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between checkbox and text */
+  font-size: 0.95rem; /* Slightly smaller text */
+  color: #212529; /* Neutral text color */
+}
+
+.filterItem input[type="checkbox"],
+.filterItem input[type="radio"] {
+  margin: 0; /* Remove default margin */
+  accent-color: #007bff; /* Optional: Custom checkbox/radio color */
+}
+
+/* Select Dropdown Styling */
+.select {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.applyButton {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.applyButton:hover {
+  background-color: #218838;
+}
+
+.resetButton {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.resetButton:hover {
+  background-color: #c82333;
+}
