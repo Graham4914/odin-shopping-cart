@@ -3,6 +3,7 @@ import styles from './ShopPage.module.css';
 import ProductCard from '../ProductCard/ProductCard';
 import FilterPanel from '../FilterPanel/FilterPanel';
 import { fetchProducts } from '../../utils/api';
+import Footer from '../Footer/Footer';
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
@@ -11,7 +12,7 @@ const ShopPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const categories = ['Men\'s Clothing', 'Women\'s Clothing', 'Jewelry', 'Electronics'];
+  const categories = ['Men\'s Clothing', 'Women\'s Clothing', 'Jewelery', 'Electronics'];
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -76,26 +77,34 @@ const ShopPage = () => {
   }
 
   return (
+    <>
     <div className={styles.shopPage}>
-      {/* Banner */}
-      <div className={styles.banner}>
-        <h1>{selectedCategoryText}</h1>
+      {/* Sidebar (Filter Panel) */}
+      <div className={styles.filterPanelWrapper}>
+        <FilterPanel
+          categories={categories}
+          onApplyFilters={handleApplyFilters}
+          onResetFilters={handleResetFilters}
+        />
       </div>
-
-      {/* Filter Panel */}
-      <FilterPanel
-        categories={categories}
-        onApplyFilters={handleApplyFilters}
-        onResetFilters={handleResetFilters}
-      />
-
-      {/* Product List */}
-      <div className={styles.productList}>
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+  
+      {/* Main Content */}
+      <div className={styles.mainContent}>
+        {/* Header */}
+        <div className={styles.shopPageHeader}>
+          <h1>{selectedCategoryText}</h1>
+        </div>
+  
+        {/* Product List */}
+        <div className={styles.productList}>
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

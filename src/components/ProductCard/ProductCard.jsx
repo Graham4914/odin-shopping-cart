@@ -1,6 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import styles from './ProductCard.module.css';
 import { useCart } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
+
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -12,20 +16,24 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className={styles.productCard}>
+      <Link to={`/product/${product.id}`} state={{ product }} className={styles.productLink}>
+      <div className={styles.productImageContainer}>
       <img
         src={product.image}
         alt={product.title}
         className={styles.productImage}
       />
+      </div>
       <h2 className={styles.productTitle}>{product.title}</h2>
       <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
+      </Link>
       <div className={styles.quantityControls}>
         <button
           className={styles.decrementButton}
           onClick={decrementQuantity}
           disabled={quantity <= 1}
         >
-          -
+          <FontAwesomeIcon icon={faMinus} />
         </button>
         <input
           type="number"
@@ -35,7 +43,7 @@ const ProductCard = ({ product }) => {
           min="1"
         />
         <button className={styles.incrementButton} onClick={incrementQuantity}>
-          +
+        <FontAwesomeIcon icon={faPlus} />
         </button>
       </div>
       <button

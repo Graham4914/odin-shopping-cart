@@ -1,37 +1,49 @@
 /* Overall Shop Page Layout */
 .shopPage {
   display: flex;
-  margin-left: 220px; /* Adjust for FilterPanel width */
-  padding: 20px;
-  flex-direction: column;
+  max-width: 100%; /* Prevent horizontal overflow */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  padding: 0 20px;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
-/* Banner Section */
-.banner {
-  width: 100%;
-  height: 150px;
-  background-color: #f8f9fa;
+/* Filter Panel Wrapper */
+.filterPanelWrapper {
+  flex: 0 0 220px; /* Reserve space for the sidebar */
+  padding: 0;
+}
+
+/* Main Content Area */
+.mainContent {
+  flex: 1; /* Take remaining space */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
+  flex-direction: column;
+  margin: 0 20px 0 0;
 }
 
-.banner h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  margin: 0;
+/* Header Section */
+.shopPageHeader {
+  background: linear-gradient(90deg, #FF7F50, #FF4500); 
+  color: white;
+  text-align: center;
+  padding: .5rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+  margin: 20px -20px 20px 0;
 }
+/* Product Grid */
+
 
 /* Product Grid */
 .productList {
+  flex: 1; 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 30px; 
   width: 100%;
-  margin-top: 20px;
+  justify-items: center; 
+  padding: 20px 10px;
+  
 }
 
 /* Loading and Error States */
@@ -43,10 +55,7 @@
   margin-top: 20px;
 }
 
-  /* ShopPage.module.css */
-  /* .productList {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    width: 100%;
-  } */
+img {
+  max-width: 100%; /* Ensure images scale properly */
+  height: auto;
+}

@@ -1,11 +1,15 @@
 .navbar {
+  position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
     padding: 1rem;
   }
-  
+
+
+   
   .navList {
     list-style: none;
     display: flex;
@@ -25,23 +29,23 @@
   }
   
   .cartCount {
-    background-color: red; /* Badge background */
-    color: white; /* Badge text color */
-    font-size: .8rem; /* Slightly smaller text */
-    font-weight: bold; /* Bold text */
-    width: 1.2rem; /* Fixed width */
-    height: 1.2rem; /* Fixed height */
-    display: flex; /* Center content */
+    background-color: red; 
+    color: white; 
+    font-size: .8rem; 
+    font-weight: bold; 
+    width: 1.2rem; 
+    height: 1.2rem; 
+    display: flex; 
     align-items: center;
     justify-content: center;
-    border-radius: 50%; /* Circular shape */
-    position: absolute; /* Position relative to the nav link */
-    top: -0.5rem; /* Adjust the badge above the nav link */
-    right: -1.8rem; /* Adjust the badge to the right of the nav link */
+    border-radius: 50%; 
+    position: absolute; 
+    top: -0.5rem; 
+    right: -1.8rem; 
    
-    z-index: 10; /* Ensure it appears above other elements */
+    z-index: 10; 
   }
   
   .navLink {
-    position: relative; /* Set positioning context for the badge */
+    position: relative; 
   }

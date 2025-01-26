@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HomePage.module.css';
+import Footer from '../Footer/Footer';
 
 const HomePage = () => {
   return (
+    <>
     <div className={styles.homePage}>
       {/* Hero Banner */}
       <section className={styles.heroBanner}>
@@ -47,6 +49,8 @@ const HomePage = () => {
         <p className={styles.copyright}>© 2025 Odin Shopping Cart</p>
       </footer>
     </div>
+    <Footer />
+    </>
   );
 };
 

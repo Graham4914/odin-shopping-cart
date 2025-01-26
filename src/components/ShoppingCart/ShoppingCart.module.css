@@ -1,114 +1,134 @@
+/* ShoppingCart.module.css */
+
 .shoppingCart {
-    padding: 2rem;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-  
-  .heading {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .emptyMessage {
-    font-size: 1.2rem;
-    color: #666;
-    text-align: center;
-  }
-  
-  .cartList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .cartItem {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1rem;
-  }
-  
-  .productImage {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    margin-right: 1rem;
-    border-radius: 4px;
-  }
-  
-  .productDetails {
-    flex: 1;
-  }
-  
-  .productTitle {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .productPrice {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 1rem;
-  }
-  
-  .actions {
-    display: flex;
-    gap: 0.5rem;
-
-  }
-  .quantityControls {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .decrementButton,
-.incrementButton {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #ccc;
+  padding: 2rem;
   background-color: #f9f9f9;
-  color: #333;
-  font-size: 18px;
-  text-align: center;
-  line-height: 28px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
 }
 
-.decrementButton:disabled {
-    cursor: not-allowed;
-    background-color: #e0e0e0;
-  }
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
 
+.cartContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Two columns: 2/3 width for product list, 1/3 for summary */
+  gap: 2rem;
+  min-height: 300px; 
+  box-sizing: border-box;
+  padding: 1rem; 
+}
 
-  .incrementButton:hover,
-.decrementButton:hover:not(:disabled) {
-  background-color: #ddd;
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  gap: 1rem;
+}
+
+.productImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.productDetails {
+  flex: 1;
+}
+
+.productTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.productPrice {
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .quantityInput {
-    width: 50px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 5px;
-  }
-  
-  .removeButton {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .removeButton:hover {
-    background-color: #ff1a1a;
-  }
- 
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.decrementButton,
+.incrementButton,
+.removeButton {
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.removeButton {
+  color: #dc143c;
+}
+
+.summarySection {
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summaryHeading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.summaryText {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.checkoutButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.checkoutButton:hover {
+  background-color: #218838;
+}
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 3.5rem); /* Ensure it spans the full viewport */
+  margin: 0; /* Remove any potential margins */
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent any overflow */
+}
+
+
+.pageContent {
+  /* Pushes the footer to the bottom of the viewport */
+  flex: 1; 
+  padding: 2rem; /* Keep consistent spacing */
+}

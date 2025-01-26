@@ -1,24 +1,37 @@
 /* ProductCard.module.css */
 .productCard {
-  width: 100%; /* Adjust to grid cell width */
-  max-width: 250px; /* Prevent cards from being too large */
-  background-color: #f9f9f9; /* Subtle background */
+  width: 100%; 
+  max-width: 300px; 
+  background-color: #f9f9f9; 
   border: 1px solid #ddd;
   border-radius: 8px;
-  overflow: hidden; /* Contain content */
+  overflow: hidden; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 1rem;
+  transition: transform 0.2s ease; 
+}
+
+.productCard:hover {
+  transform: scale(1.02);
+}
+
+
+.productImageContainer {
+  aspect-ratio: 4 / 3; 
+  overflow: hidden;
+  border-radius: 8px; 
+  width: 100%; 
 }
 
 .productImage {
-  width: 100%; /* Ensure image fills the width of the card */
-  height: 150px; /* Fixed height */
-  object-fit: cover; /* Prevent distortion */
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; 
 }
 
 .productTitle {
@@ -33,51 +46,57 @@
   margin: 0.5rem 0;
 }
 
-  
+.quantityControls {
+  display: flex;
+  align-items: center; /* Vertically aligns items */
+  justify-content: space-between; /* Spaces out the buttons and input */
+  gap: 0.5rem; /* Adjusts spacing */
+  margin-top: 0.5rem;
+  height: 1rem;
+}
 
-  .quantityControls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  .decrementButton,
-  .incrementButton {
-    display: flex;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    color: #333;
-    font-size: 18px;
-    text-align: center;
-    line-height: 28px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-    justify-content: center;
-    align-items: center;
-  }
+.decrementButton,
+.incrementButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 50%; 
+  height: 1.2rem; 
+  width: 1.2rem; 
+  font-size: 0.8rem; 
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease; 
+}
+
+.decrementButton:hover,
+.incrementButton:hover {
+  background-color: #f0f0f0; 
+  transform: scale(1.1); 
+}
+
+.quantityInput {
+  width: 2rem; 
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding-left: .8rem; 
+  margin: 4px 0 4px;
+}
+
+.incrementButton:hover,
+.decrementButton:hover:not(:disabled) {
+  background-color: #eee;
+}
+
   
   .decrementButton:disabled {
     cursor: not-allowed;
     background-color: #e0e0e0;
   }
   
-  .incrementButton:hover,
-  .decrementButton:hover:not(:disabled) {
-    background-color: #ddd;
-  }
-  
-  .quantityInput {
-    width: 50px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 5px;
-  }
+ 
   
   .addToCartButton {
     margin-top: 10px;
