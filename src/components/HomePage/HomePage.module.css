@@ -1,4 +1,4 @@
-.homePage {
+/* .homePage {
     text-align: center;
     padding: 2rem;
     background-color: #f9f9f9;
@@ -15,4 +15,137 @@
     font-size: 1.2rem;
     color: #666;
   }
-  
+   */
+
+   /* HomePage.module.css */
+
+.homePage {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Hero Banner */
+.heroBanner {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: #fff;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroHeading {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.heroSubheading {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ctaButton {
+  background-color: #fff;
+  color: #ff7e5f;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #ff7e5f;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Category Section */
+.categorySection {
+  margin-top: 3rem;
+}
+
+.categoryHeading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 0 2rem;
+}
+
+.categoryTile {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #333;
+}
+
+.categoryTile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.categoryContent {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  background-color: #f2f2f2;
+  padding: 1.5rem 2rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.footerLinks {
+  margin-bottom: 1rem;
+}
+
+.footerLink {
+  margin: 0 1rem;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footerLink:hover {
+  color: #ff7e5f;
+}
+
+.socialLinks {
+  margin-top: 1rem;
+}
+
+.socialIcon {
+  margin: 0 0.5rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.socialIcon:hover {
+  color: #ff7e5f;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: #666;
+}
