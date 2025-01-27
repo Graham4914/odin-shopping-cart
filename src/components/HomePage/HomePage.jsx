@@ -16,24 +16,54 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Category Tiles */}
-      <section className={styles.categorySection}>
-        <h2 className={styles.categoryHeading}>Shop by Category</h2>
-        <div className={styles.categoryGrid}>
-          <Link to="/shop?category=mens-clothing" className={styles.categoryTile}>
-            <div className={styles.categoryContent}>Men's Clothing</div>
-          </Link>
-          <Link to="/shop?category=womens-clothing" className={styles.categoryTile}>
-            <div className={styles.categoryContent}>Women's Clothing</div>
-          </Link>
-          <Link to="/shop?category=jewelry" className={styles.categoryTile}>
-            <div className={styles.categoryContent}>Jewelry</div>
-          </Link>
-          <Link to="/shop?category=electronics" className={styles.categoryTile}>
-            <div className={styles.categoryContent}>Electronics</div>
-          </Link>
-        </div>
-      </section>
+{/* Category Tiles */}
+<section className={styles.categorySection}>
+  <h2 className={styles.categoryHeading}>Shop by Category</h2>
+  <div className={styles.categoryGrid}>
+  <Link
+  to={{
+    pathname: "/shop",
+    search: "?category=Men%27s%20Clothing",
+  }}
+  state={{ initialCategory: "Men's Clothing" }}
+  className={styles.categoryTile}
+>
+  <div className={styles.categoryContent}>Men's Clothing</div>
+</Link>
+
+    <Link
+  to={{
+    pathname: "/shop",
+    search: "?category=Women%27s%20Clothing",
+  }}
+  state={{ initialCategory: "Women's Clothing" }}
+  className={styles.categoryTile}
+>
+  <div className={styles.categoryContent}>Women's Clothing</div>
+</Link>
+<Link
+  to={{
+    pathname: "/shop",
+    search: "?category=Jewelery",
+  }}
+  state={{ initialCategory: "Jewelery" }}
+  className={styles.categoryTile}
+>
+  <div className={styles.categoryContent}>Jewelry</div>
+</Link>
+<Link
+  to={{
+    pathname: "/shop",
+    search: "?category=Electronics",
+  }}
+  state={{ initialCategory: "Electronics" }}
+  className={styles.categoryTile}
+>
+  <div className={styles.categoryContent}>Electronics</div>
+</Link>
+  </div>
+</section>
+
 
       {/* Footer */}
       <footer className={styles.footer}>

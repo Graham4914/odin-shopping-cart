@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; // Added useEffect
 import styles from './FilterPanel.module.css';
 
-const FilterPanel = ({ categories = [], onApplyFilters, onResetFilters }) => {
+const FilterPanel = ({ categories = [], onApplyFilters, onResetFilters, initialCategory = '' }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedPriceRange, setSelectedPriceRange] = useState([0, Infinity]);
+  const isInitialCategoryApplied = useRef(false);
+
+  // Sync initial category with selectedCategories
+  useEffect(() => {
+    if (initialCategory && !isInitialCategoryApplied.current) {
+      setSelectedCategories([initialCategory]); // Pre-select the category
+      onApplyFilters({ categories: [initialCategory], priceRange: selectedPriceRange }); // Trigger filters
+      isInitialCategoryApplied.current = true; // Mark as applied
+    }
+  }, [initialCategory, selectedPriceRange, onApplyFilters]);
 
   const handleCategoryChange = (category) => {
     const updatedCategories = selectedCategories.includes(category)

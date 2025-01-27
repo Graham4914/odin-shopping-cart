@@ -4,6 +4,8 @@ import ProductCard from '../ProductCard/ProductCard';
 import FilterPanel from '../FilterPanel/FilterPanel';
 import { fetchProducts } from '../../utils/api';
 import Footer from '../Footer/Footer';
+import { useSearchParams, useLocation } from 'react-router-dom';
+
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
@@ -11,9 +13,27 @@ const ShopPage = () => {
   const [filters, setFilters] = useState({ categories: [], priceRange: [0, Infinity] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const categoryFromState = location.state?.initialCategory || "";
+  const categoryFromQuery = searchParams.get("category") || "";
+  const category = categoryFromState || categoryFromQuery; // Prefer state over query
   const categories = ['Men\'s Clothing', 'Women\'s Clothing', 'Jewelery', 'Electronics'];
 
+  
+  // Sync filters with query parameter (category)
+  useEffect(() => {
+    if (category && !filters.categories.includes(category)) {
+      setFilters((prev) => ({
+        ...prev,
+        categories: [...new Set([...prev.categories, category])], // Ensure no duplicates
+      }));
+    }
+  }, [category, filters.categories]);
+
+ 
+
+  // Fetch products from the API
   useEffect(() => {
     const loadProducts = async () => {
       const result = await fetchProducts();
@@ -29,6 +49,8 @@ const ShopPage = () => {
     loadProducts();
   }, []);
 
+  
+  // Apply filters to the product list
   useEffect(() => {
     const applyFilters = () => {
       let updatedProducts = [...products];
@@ -36,9 +58,7 @@ const ShopPage = () => {
       // Filter by categories
       if (filters.categories.length > 0) {
         updatedProducts = updatedProducts.filter((product) =>
-          filters.categories.some((category) =>
-            category.toLowerCase() === product.category.toLowerCase()
-          )
+          filters.categories.some((cat) => cat.toLowerCase() === product.category.toLowerCase())
         );
       }
 
@@ -78,32 +98,33 @@ const ShopPage = () => {
 
   return (
     <>
-    <div className={styles.shopPage}>
-      {/* Sidebar (Filter Panel) */}
-      <div className={styles.filterPanelWrapper}>
-        <FilterPanel
-          categories={categories}
-          onApplyFilters={handleApplyFilters}
-          onResetFilters={handleResetFilters}
-        />
-      </div>
-  
-      {/* Main Content */}
-      <div className={styles.mainContent}>
-        {/* Header */}
-        <div className={styles.shopPageHeader}>
-          <h1>{selectedCategoryText}</h1>
+      <div className={styles.shopPage}>
+        {/* Sidebar (Filter Panel) */}
+        <div className={styles.filterPanelWrapper}>
+          <FilterPanel
+            categories={categories}
+            onApplyFilters={handleApplyFilters}
+            onResetFilters={handleResetFilters}
+            initialCategory={category} // Pass the initial category from query parameters
+          />
         </div>
-  
-        {/* Product List */}
-        <div className={styles.productList}>
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+
+        {/* Main Content */}
+        <div className={styles.mainContent}>
+          {/* Header */}
+          <div className={styles.shopPageHeader}>
+            <h1>{selectedCategoryText}</h1>
+          </div>
+
+          {/* Product List */}
+          <div className={styles.productList}>
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-    <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
