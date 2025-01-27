@@ -1,14 +1,18 @@
 /* Filter Panel */
 .filterPanel {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   flex: 0 0 220px; 
-  margin: 0; 
+  margin: 20px 10px;
   position: fixed;
+  padding: 20px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 
 
-.heading {
-  font-size: 1.5rem;
+.filterHeading {
+  font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -38,6 +42,10 @@
   margin-bottom: 10px; 
 }
 
+.filterItem:hover {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
 .filterItem label {
   display: flex;
   align-items: center;
@@ -98,3 +106,10 @@
   background-color: #c82333;
 }
 
+@media (max-width: 768px) {
+  .filterPanel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

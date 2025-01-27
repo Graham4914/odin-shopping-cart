@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
 
+
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -20,18 +21,21 @@ const ShopPage = () => {
   const category = categoryFromState || categoryFromQuery; // Prefer state over query
   const categories = ['Men\'s Clothing', 'Women\'s Clothing', 'Jewelery', 'Electronics'];
 
-  
-  // Sync filters with query parameter (category)
-  useEffect(() => {
-    if (category && !filters.categories.includes(category)) {
-      setFilters((prev) => ({
-        ...prev,
-        categories: [...new Set([...prev.categories, category])], // Ensure no duplicates
-      }));
-    }
-  }, [category, filters.categories]);
 
- 
+  
+
+ const [initialMount, setInitialMount] = useState(true);
+
+useEffect(() => {
+  if (initialMount && category) {
+    // On first load, if there's a category from the URL, use it.
+    setFilters((prev) => ({
+      ...prev,
+      categories: [...new Set([...prev.categories, category])],
+    }));
+  }
+  setInitialMount(false);
+}, [initialMount, category]);
 
   // Fetch products from the API
   useEffect(() => {
@@ -110,7 +114,7 @@ const ShopPage = () => {
         </div>
 
         {/* Main Content */}
-        <div className={styles.mainContent}>
+        <div className={styles.shopContent}>
           {/* Header */}
           <div className={styles.shopPageHeader}>
             <h1>{selectedCategoryText}</h1>

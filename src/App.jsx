@@ -6,12 +6,16 @@ import Navbar from './components/Navbar/Navbar';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import { CartProvider } from './context/CartContext';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import styles from './App.module.css';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   return (
     <CartProvider> {/* CartProvider wraps the entire app */}
-      <div>
-        <Navbar />
+    <Navbar />
+     <div className={styles.appContainer}> {/* Flexbox container */}
+        
+        <main className={styles.mainContent}> {/* Main content area */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
@@ -19,6 +23,9 @@ const App = () => {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+       
+        </main>
+        <Footer />
       </div>
     </CartProvider>
   );

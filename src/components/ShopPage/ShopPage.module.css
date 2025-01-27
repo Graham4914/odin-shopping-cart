@@ -14,11 +14,13 @@
 }
 
 /* Main Content Area */
-.mainContent {
+.shopContent {
   flex: 1; /* Take remaining space */
   display: flex;
   flex-direction: column;
-  margin: 0 20px 0 0;
+  margin: 0;
+  padding-bottom: 20px;
+  min-height: 0; /* Prevent scroll clipping */
 }
 
 /* Header Section */
@@ -29,7 +31,7 @@
   padding: .5rem 0;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
-  margin: 20px -20px 20px 0;
+  margin: 20px ;
 }
 /* Product Grid */
 
@@ -39,10 +41,10 @@
   flex: 1; 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 30px; 
+  gap: 40px; 
   width: 100%;
   justify-items: center; 
-  padding: 20px 10px;
+  padding: 20px 0;
   
 }
 
@@ -58,4 +60,12 @@
 img {
   max-width: 100%; /* Ensure images scale properly */
   height: auto;
+}
+.mainContent {
+  height: 100vh;
+  
+}
+
+.appContainer {
+  overflow-y: scroll;
 }

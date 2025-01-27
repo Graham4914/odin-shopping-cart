@@ -1,51 +1,71 @@
 .navbar {
   position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 1rem;
-  }
+  top: 0;
+  display: flex;
+  justify-content: space-between; /* Creates spacing for navList and cartContainer */
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 0 1.5rem;
+  z-index: 1000;
+  height: 55px;
+}
 
+.navList {
+  display: flex;
+  gap: 2rem; /* Even spacing between links */
+  margin: 0 auto; /* Centers the nav links */
+  padding: 0;
+  list-style: none;
+  position: absolute; /* Removes dependency on flex-grow or space-between */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Correct centering */
+}
 
-   
-  .navList {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navLink {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .navLink:hover {
-    color: #f0a500;
-  }
-  
-  .cartCount {
-    background-color: red; 
-    color: white; 
-    font-size: .8rem; 
-    font-weight: bold; 
-    width: 1.2rem; 
-    height: 1.2rem; 
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%; 
-    position: absolute; 
-    top: -0.5rem; 
-    right: -1.8rem; 
-   
-    z-index: 10; 
-  }
-  
-  .navLink {
-    position: relative; 
-  }
+.navLink {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #ff7e5f;
+}
+
+.active {
+  color: #ff7e5f;
+}
+
+.cartContainer {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push to the far right */
+}
+
+.cartLink {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  font-size: 1.5rem; /* Adjusts the size of the FontAwesome icon */
+  transition: transform 0.2s ease;
+}
+.cartLink:hover {
+  transform: scale(1.1); /* Adds a subtle hover effect */
+}
+
+.cartCount {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Adds a shadow to the count badge */
+}

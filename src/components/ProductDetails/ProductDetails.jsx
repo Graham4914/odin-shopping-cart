@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './ProductDetails.module.css';
-import Footer from '../Footer/Footer';
+
 
 const ProductDetails = () => {
   const { state } = useLocation(); // Access product details passed via Link state
@@ -74,7 +74,7 @@ const ProductDetails = () => {
       </div>
       
     </div>
-    <Footer />
+
     </>
   );
 };

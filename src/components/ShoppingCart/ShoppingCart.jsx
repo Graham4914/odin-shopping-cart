@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './ShoppingCart.module.css';
 import { useCart } from '../../context/CartContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import Footer from '../Footer/Footer';
 
 const ShoppingCart = () => {
@@ -17,66 +15,67 @@ const ShoppingCart = () => {
   };
 
   return (
-    <div className={styles.pageWrapper}>
-      <div className={styles.pageContent}>
-        <div className={styles.shoppingCart}>
-          <h1 className={styles.heading}>Your Shopping Cart</h1>
-          {cart.length === 0 ? (
-            <p className={styles.emptyMessage}>Your cart is empty.</p>
-          ) : (
-            <div className={styles.cartContent}>
-              {/* Left Column: Product List */}
-              <div className={styles.cartList}>
-                {cart.map((item) => (
-                  <div key={item.id} className={styles.cartItem}>
-                    <img src={item.image} alt={item.title} className={styles.productImage} />
-                    <div className={styles.productDetails}>
-                      <h2 className={styles.productTitle}>{item.title}</h2>
-                      <p className={styles.productPrice}>${item.price.toFixed(2)}</p>
-                      <div className={styles.quantityControls}>
-                        <button
-                          className={styles.decrementButton}
-                          onClick={() => updateCartQuantity(item.id, Math.max(1, item.quantity - 1))}
-                          disabled={item.quantity <= 1}
-                        >
-                          -
-                        </button>
-                        <input
-                          type="number"
-                          className={styles.quantityInput}
-                          value={item.quantity}
-                          onChange={(e) => updateCartQuantity(item.id, Number(e.target.value))}
-                          min="1"
-                        />
-                        <button
-                          className={styles.incrementButton}
-                          onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
-                        >
-                          +
-                        </button>
-                      </div>
-                      <button className={styles.removeButton} onClick={() => removeFromCart(item.id)}>
-                        Remove
+    <div className={styles.shoppingCartContainer}>
+      <div className={styles.shoppingCartContent}>
+        <h1 className={styles.heading}>Your Shopping Cart</h1>
+        {cart.length === 0 ? (
+          <p className={styles.emptyMessage}>Your cart is empty.</p>
+        ) : (
+          <div className={styles.cartContent}>
+            {/* Product List */}
+            <div className={styles.cartList}>
+              {cart.map((item) => (
+                <div key={item.id} className={styles.cartItem}>
+                  <img src={item.image} alt={item.title} className={styles.productImage} />
+                  <div className={styles.productDetails}>
+                    <h2 className={styles.productTitle}>{item.title}</h2>
+                    <p className={styles.productPrice}>${item.price.toFixed(2)}</p>
+                    <div className={styles.quantityControls}>
+                      <button
+                        className={styles.decrementButton}
+                        onClick={() => updateCartQuantity(item.id, Math.max(1, item.quantity - 1))}
+                        disabled={item.quantity <= 1}
+                      >
+                        -
+                      </button>
+                      <input
+                        type="number"
+                        className={styles.quantityInput}
+                        value={item.quantity}
+                        onChange={(e) => updateCartQuantity(item.id, Number(e.target.value))}
+                        min="1"
+                      />
+                      <button
+                        className={styles.incrementButton}
+                        onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
+                      >
+                        +
                       </button>
                     </div>
+                    <button
+                      className={styles.removeButton}
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Remove
+                    </button>
                   </div>
-                ))}
-              </div>
-
-              {/* Right Column: Order Summary */}
-              <div className={styles.summarySection}>
-                <h2 className={styles.summaryHeading}>Order Summary</h2>
-                <p className={styles.summaryText}>Total Items: {totalItems}</p>
-                <p className={styles.summaryText}>Total Cost: ${totalCost.toFixed(2)}</p>
-                <button className={styles.checkoutButton} onClick={handleCheckout}>
-                  Proceed to Checkout
-                </button>
-              </div>
+                </div>
+              ))}
             </div>
-          )}
-        </div>
+
+            {/* Order Summary */}
+            <div className={styles.summarySection}>
+              <h2 className={styles.summaryHeading}>Order Summary</h2>
+              <p className={styles.summaryText}>Total Items: {totalItems}</p>
+              <p className={styles.summaryText}>Total Cost: ${totalCost.toFixed(2)}</p>
+              <button className={styles.checkoutButton} onClick={handleCheckout}>
+                Proceed to Checkout
+              </button>
+            </div>
+          </div>
+        )}
       </div>
-      <Footer />
+     
     </div>
   );
 };

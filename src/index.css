@@ -2,17 +2,24 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  
+  overflow:hidden; /* Prevent body from scrolling */
+  box-sizing: border-box;
+}
+
+body {
   min-width: 320px;
-  min-height: 100vh;
+  font-family: inherit;
+  background-color: #f9f9f9; /* Optional background */
 }
 
 a {
@@ -22,28 +29,4 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-/* button {
-  border-radius: 4px;
-  border: 1px solid transparent;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-
-button:hover {
-  border-color: #ccc;
-} */
-/* * {
-  outline: 1px solid red;
-} */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow-x: hidden; /* Disable horizontal scrolling */
-  box-sizing: border-box;
 }

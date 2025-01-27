@@ -1,5 +1,16 @@
 /* ShoppingCart.module.css */
 
+
+.shoppingCartContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.shoppingCartContent {
+  flex: 1; /* Push the footer down */
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
 .shoppingCart {
   padding: 2rem;
   background-color: #f9f9f9;
@@ -116,19 +127,3 @@
   background-color: #218838;
 }
 
-.pageWrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 3.5rem); /* Ensure it spans the full viewport */
-  margin: 0; /* Remove any potential margins */
-  padding: 0;
-  box-sizing: border-box;
-  overflow: hidden; /* Prevent any overflow */
-}
-
-
-.pageContent {
-  /* Pushes the footer to the bottom of the viewport */
-  flex: 1; 
-  padding: 2rem; /* Keep consistent spacing */
-}

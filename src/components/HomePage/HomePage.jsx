@@ -49,7 +49,7 @@ const HomePage = () => {
   state={{ initialCategory: "Jewelery" }}
   className={styles.categoryTile}
 >
-  <div className={styles.categoryContent}>Jewelry</div>
+  <div className={styles.categoryContent}>Jewelery</div>
 </Link>
 <Link
   to={{
@@ -65,21 +65,10 @@ const HomePage = () => {
 </section>
 
 
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.footerLinks}>
-          <Link to="/about" className={styles.footerLink}>About</Link>
-          <Link to="/contact" className={styles.footerLink}>Contact</Link>
-          <div className={styles.socialLinks}>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>Facebook</a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>Instagram</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>Twitter</a>
-          </div>
-        </div>
-        <p className={styles.copyright}>© 2025 Odin Shopping Cart</p>
-      </footer>
+     
+     
     </div>
-    <Footer />
+   
     </>
   );
 };
