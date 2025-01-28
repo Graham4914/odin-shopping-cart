@@ -1,12 +1,12 @@
 /* ProductDetails.module.css */
 
-/* Overall Page Styling */
 .productDetailsPage {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 2rem;
     background-color: #f9f9f9;
+    margin-top: 10px ;
   }
   
   /* Two-column Layout */
@@ -20,6 +20,7 @@
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
   }
   
   /* Left Column: Image */
@@ -38,7 +39,11 @@
     height: auto;
     object-fit: cover;
     border-radius: 8px;
+    transition: transform 0.3s ease; 
   }
+  .productImageWrapper:hover .productImage {
+    transform: scale(1.02);
+}
   
   /* Right Column: Product Info */
   .productInfo {
@@ -115,11 +120,12 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 1.2rem;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
   
   .addToCartButton:hover {
     background-color: #218838;
+    transform: scale(1.01);
   }
   
   /* Navigation Buttons */
@@ -139,11 +145,26 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
   
   .backButton:hover,
   .viewCartButton:hover {
     background-color: #0056b3;
+    transform: scale(1.04);
   }
   
+  .feedbackMessage {
+    font-size: 1rem;
+    color: #28a745;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Optional Fade-out effect */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }

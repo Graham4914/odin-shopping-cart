@@ -6,12 +6,28 @@ import { useCart } from '../../context/CartContext';
 import styles from './ProductDetails.module.css';
 
 
+
+
+
 const ProductDetails = () => {
   const { state } = useLocation(); // Access product details passed via Link state
   const { product } = state || {}; // Handle undefined state gracefully
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+
+const handleAddToCart = () => {
+    addToCart(product, quantity);
+    setFeedbackMessage('Added to Cart!');
+    setTimeout(() => setFeedbackMessage(''), 1500); // Clear message after 2 seconds
+};
+
+const handleAddToCartAndNavigate = () => {
+  handleAddToCart(); // Adds to the cart and shows feedback
+  setTimeout(() => navigate('/cart'), 2000); // Navigate after showing feedback for 2 seconds
+};
+
 
   if (!product) {
     return <p className={styles.errorMessage}>Product not found. Please try again.</p>;
@@ -54,14 +70,12 @@ const ProductDetails = () => {
             </button>
           </div>
           <button
-            onClick={() => {
-              addToCart(product, quantity);
-              navigate('/cart'); // Redirect to cart after adding
-            }}
-            className={styles.addToCartButton}
+             onClick={handleAddToCartAndNavigate}
+             className={styles.addToCartButton}
           >
             Add to Cart
           </button>
+          {feedbackMessage && <p className={styles.feedbackMessage}>{feedbackMessage}</p>}
           <div className={styles.navigationButtons}>
             <button onClick={() => navigate('/shop')} className={styles.backButton}>
               Back to Shop

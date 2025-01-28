@@ -1,7 +1,9 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import styles from './ShoppingCart.module.css';
 import { useCart } from '../../context/CartContext';
-import Footer from '../Footer/Footer';
+
 
 const ShoppingCart = () => {
   const { cart, removeFromCart, updateCartQuantity } = useCart();
@@ -30,13 +32,14 @@ const ShoppingCart = () => {
                   <div className={styles.productDetails}>
                     <h2 className={styles.productTitle}>{item.title}</h2>
                     <p className={styles.productPrice}>${item.price.toFixed(2)}</p>
+                    <div className={styles.itemActions}>
                     <div className={styles.quantityControls}>
                       <button
                         className={styles.decrementButton}
                         onClick={() => updateCartQuantity(item.id, Math.max(1, item.quantity - 1))}
                         disabled={item.quantity <= 1}
                       >
-                        -
+                        <FontAwesomeIcon icon={faMinus} />
                       </button>
                       <input
                         type="number"
@@ -49,7 +52,7 @@ const ShoppingCart = () => {
                         className={styles.incrementButton}
                         onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
                       >
-                        +
+                        <FontAwesomeIcon icon={faPlus} />
                       </button>
                     </div>
                     <button
@@ -58,6 +61,7 @@ const ShoppingCart = () => {
                     >
                       Remove
                     </button>
+                    </div>
                   </div>
                 </div>
               ))}
