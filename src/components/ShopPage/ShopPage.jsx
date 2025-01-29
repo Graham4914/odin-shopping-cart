@@ -3,7 +3,6 @@ import styles from './ShopPage.module.css';
 import ProductCard from '../ProductCard/ProductCard';
 import FilterPanel from '../FilterPanel/FilterPanel';
 import { fetchProducts } from '../../utils/api';
-import Footer from '../Footer/Footer';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
 

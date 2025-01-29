@@ -8,69 +8,89 @@
   text-align: center;
 }
 
-/* Hero Banner */
+body, .heroBanner {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; 
+}
+
 .heroBanner {
-  height: 40vh;
-  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Updated gradient */
-  color: #fff;
-  text-align: center;
-  padding: 1rem 0;
-  margin: 0; /* Remove surrounding white gaps */
-  width: 100vw; /* Ensure it spans the full width */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  min-height: 40vh;
+  padding: 2rem 1rem;
+  background: linear-gradient(to right, #ff7e5f, #feb47b); 
+  color: white;
+  box-sizing: border-box; 
 }
-
 
 .heroContent {
   max-width: 800px;
-  margin: 0 auto; /* Ensure it's centered */
-  text-align: center; /* Align content within the container */
+  width: 90%;
+  margin: 0 auto; 
 }
 
 .heroHeading {
-  font-size: 4rem; /* Increased font size for the main heading */
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
 .heroSubheading {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   margin-bottom: 2rem;
 }
+
 
 .ctaButton {
   background-color: #fff;
   color: #ff7e5f;
-  padding: 0.8rem 1.5rem;
-  font-size: 1.2rem;
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: bold;
   border-radius: 5px;
   text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, background-color 0.3s ease;
-  margin: 0 auto; /* Center the button */
-  display: inline-block; 
+  display: inline-block;
+  text-align: center;
 }
 
 .ctaButton:hover {
-  background-color: #ff7e5f;
+  background-color: #ff5a36;
   color: #fff;
   transform: scale(1.05);
 }
 
+.ctaButton:active {
+  transform: scale(0.98);
+}
+
+
 /* Category Section */
-.categorySection {
+/* .categorySection {
   text-align: center;
-  margin: 2rem auto 2rem; /* Adjust vertical spacing */
+  margin: 2rem auto 2rem;
   min-height: 0;
-  max-height: 200px; /* Reserve space for centering */
+  max-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+} */
+
+.categoriesSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+  gap: clamp(0.5rem, 2vw, 1.5rem); /* Dynamic spacing */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 2rem);
+  text-align: center;
 }
 
 .categoryHeading {
@@ -80,15 +100,17 @@
 }
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  width: 80%; /* Constrain grid width */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-resizing columns */
+  gap: clamp(0.5rem, 2vw, 1.5rem); /* Dynamic spacing */
   max-width: 1200px;
+  width: 90%; /* Constrain width for better centering */
+  margin: 0 auto; /* Centers the grid */
+  padding: clamp(1rem, 4vw, 2rem);
 }
 
 .categoryTile {
   background-color: #f5f5f5;
-  border-radius: 12px; /* Softer corners */
+  border-radius: 12px; /* Soft rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   text-align: center;
@@ -96,21 +118,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: bold;
   color: #333;
   cursor: pointer;
-  border: 2px solid transparent; /* Subtle border for hover effect */
+  border: 2px solid transparent;
 }
 
+
 .categoryTile:hover {
-  transform: translateY(-8px); /* Slight hover lift */
+  transform: translateY(-8px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   background-color: #ff7e5f;
   color: #fff;
-  border: 2px solid #fff; /* Adds a glowing effect */
+  border: 2px solid #fff;
 }
-
 
 .categoryContent {
   font-size: 1.2rem;
@@ -124,15 +146,20 @@
   }
 
   .heroHeading {
-    font-size: 2.5rem; /* Adjust font size for small screens */
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
   }
 
   .heroSubheading {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 4vw, 1.2rem);
   }
 
   .categoryGrid {
     grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
+  .categoryTile {
+    padding: clamp(1rem, 3vw, 1.5rem); /* More compact padding */
+    font-size: clamp(1rem, 3vw, 1.1rem);
   }
 }
 
