@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useEffect } from 'react';
 import styles from './ShopPage.module.css';
 import ProductCard from '../ProductCard/ProductCard';
@@ -19,6 +21,7 @@ const ShopPage = () => {
   const categoryFromQuery = searchParams.get("category") || "";
   const category = categoryFromState || categoryFromQuery; // Prefer state over query
   const categories = ['Men\'s Clothing', 'Women\'s Clothing', 'Jewelery', 'Electronics'];
+  const [isOpen, setIsOpen] = useState(false);
 
 
   
@@ -100,11 +103,19 @@ useEffect(() => {
   }
 
   return (
-    <>
+    
       <div className={styles.shopPage}>
+
+      <button className={styles.filterToggleButton}
+       onClick={() => setIsOpen(!isOpen)}
+       ><FontAwesomeIcon icon={faFilter} />
+        {isOpen ? "Close" : "Show"}
+    </button>
+
         {/* Sidebar (Filter Panel) */}
-        <div className={styles.filterPanelWrapper}>
+        <div className={`${styles.filterPanelWrapper} ${isOpen ? styles.open : ""}`}>
           <FilterPanel
+            isOpen={isOpen}
             categories={categories}
             onApplyFilters={handleApplyFilters}
             onResetFilters={handleResetFilters}
@@ -127,8 +138,7 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
-    </>
+
   );
 };
 

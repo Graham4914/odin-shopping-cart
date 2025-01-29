@@ -9,9 +9,42 @@
 
 /* Filter Panel Wrapper */
 .filterPanelWrapper {
-  flex: 0 0 220px; /* Reserve space for the sidebar */
-  padding: 0;
+  width: 250px;
+  transition: width 0.3s ease-in-out;
+  position: relative;
 }
+
+@media (max-width: 800px) {
+  .filterPanelWrapper {
+    position: fixed;
+    left: -100%;
+    top: 3rem;
+    height: 100vh;
+    width: 250px;
+    background: transparent;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  /* ✅ When `.open` is added, slide it in */
+  .filterPanelWrapper.open {
+    left: 0;
+  }
+}
+
+
+@media (min-width: 801px) {
+
+  .filterToggleButton {
+    display: none;
+  }
+}
+
+
+
+
+
 
 /* Main Content Area */
 .shopContent {
@@ -38,14 +71,30 @@
 
 /* Product Grid */
 .productList {
-  flex: 1; 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-  gap: 40px; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  /* width: calc(100% - 250px);  */
   width: 100%;
-  justify-items: center; 
+  justify-items: center;
   padding: 20px 0;
+  transition: width 0.3s ease;
 }
+
+
+/* @media (min-width: 1025px) {
+  .productList {
+    width: calc(100% - 250px);
+  }
+} */
+
+/* ✅ Ensure Full-Width Layout on Small Screens */
+@media (max-width: 1024px) {
+  .productList {
+    width: 100%;
+  }
+}
+
 
 /* Loading and Error States */
 .loading,
@@ -68,3 +117,53 @@ img {
 .appContainer {
   overflow-y: scroll;
 }
+
+/* 🔹 Make sure the button stays on top */
+.filterToggleButton {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: #ff7e5f;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: .8rem;
+}
+
+/* 🔹 Ensure button is only hidden on large screens */
+@media (min-width: 1024px) {
+  .filterToggleButton {
+    display: none; /* Hide on desktop */
+  }
+}
+
+/* ✅ Ensure Filter Panel Slides Out Correctly */
+@media (max-width: 1024px) {
+  .filterPanel {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+   
+  }
+
+  .filterPanel.open {
+    left: 0;
+  }
+}
+
+/* ✅ Hide Desktop Filter Panel on Small Screens */
+@media (max-width: 1024px) {
+  .desktopFilter {
+    display: none;
+  }
+}
+

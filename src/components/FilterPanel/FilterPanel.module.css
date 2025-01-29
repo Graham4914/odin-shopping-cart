@@ -7,6 +7,7 @@
   padding: 20px 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  
 }
 
 
@@ -106,10 +107,29 @@
   background-color: #c82333;
 }
 
+
 @media (max-width: 768px) {
   .filterPanel {
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
+      position: fixed;
+      left: -100%; /* Initially hidden */
+      top: 3rem;
+      width: 250px;
+      height: 100vh;
+      background: white;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+      transition: left 0.3s ease-in-out;
+      z-index: 1000;
+  }
+
+  /* ✅ This will slide in when `isOpen` is true */
+  .filterPanel.open {
+      left: 0;
+  }
+
+  .shopContent {
+    margin-left: 0; /* Prevents pushing content on mobile */
   }
 }
+ 
+
+ 

@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'; // Added useEffect
 import styles from './FilterPanel.module.css';
 
-const FilterPanel = ({ categories = [], onApplyFilters, onResetFilters, initialCategory = '' }) => {
+const FilterPanel = ({ categories = [], onApplyFilters, isOpen, onResetFilters, initialCategory = '' }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedPriceRange, setSelectedPriceRange] = useState([0, Infinity]);
   const isInitialCategoryApplied = useRef(false);
+  
+ 
+
 
   // Sync initial category with selectedCategories
   useEffect(() => {
@@ -30,7 +33,7 @@ const FilterPanel = ({ categories = [], onApplyFilters, onResetFilters, initialC
   };
 
   return (
-    <div className={styles.filterPanel}>
+    <div className={`${styles.filterPanel} ${isOpen ? styles.open : ""}`}>
       <h3 className={styles.filterHeading}>Filters</h3>
 
       {/* Category Filter */}
@@ -90,6 +93,7 @@ const FilterPanel = ({ categories = [], onApplyFilters, onResetFilters, initialC
         Reset Filters
       </button>
     </div>
+
   );
 };
 
