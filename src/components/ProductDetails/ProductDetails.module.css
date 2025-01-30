@@ -1,27 +1,26 @@
 /* ProductDetails.module.css */
 
 .productDetailsPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    margin-top: 10px ;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(1rem, 4vw, 2rem);
+  background-color: #f9f9f9;
+}
   
-  /* Two-column Layout */
-  .productContent {
-    display: grid;
-    grid-template-columns: 1.5fr 2fr; /* Adjust ratio to balance image and content */
-    gap: 2rem;
-    max-width: 1200px;
-    width: 100%;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
-  }
+  /* ✅ Two-Column Layout for Desktop */
+.productContent {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr; /* Adjusted ratio */
+  gap: clamp(1rem, 3vw, 2rem);
+  max-width: 1200px;
+  width: 100%;
+  background-color: white;
+  padding: clamp(1rem, 3vw, 2rem);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
   
   /* Left Column: Image */
   .productImageWrapper {
@@ -53,20 +52,21 @@
   }
   
   .productTitle {
-    font-size: 2rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: bold;
     margin-bottom: 1rem;
     color: #333;
   }
   
   .productDescription {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: #666;
     margin-bottom: 1rem;
   }
   
+  
   .productPrice {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: bold;
     color: #333;
     margin-bottom: 1rem;
@@ -113,19 +113,20 @@
   
   /* Add to Cart Button */
   .addToCartButton {
-    padding: 0.75rem 1.5rem;
+    padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1rem, 3vw, 1.5rem);
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     transition: background-color 0.2s ease, transform 0.2s ease;
   }
   
+  
   .addToCartButton:hover {
     background-color: #218838;
-    transform: scale(1.01);
+    transform: scale(1.05);
   }
   
   /* Navigation Buttons */
@@ -138,15 +139,16 @@
   
   .backButton,
   .viewCartButton {
-    padding: 0.75rem 1.5rem;
+    padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1rem, 3vw, 1.5rem);
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     transition: background-color 0.2s ease, transform 0.2s ease;
   }
+  
   
   .backButton:hover,
   .viewCartButton:hover {
@@ -167,4 +169,19 @@
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+
+  @media (max-width: 768px) {
+    .productContent {
+      grid-template-columns: 1fr; /* Stack content on smaller screens */
+      text-align: center;
+    }
+  
+    .productImageWrapper {
+      margin-bottom: 1.5rem;
+    }
+  
+    .navigationButtons {
+      justify-content: center;
+    }
   }
