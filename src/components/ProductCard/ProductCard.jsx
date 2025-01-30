@@ -32,6 +32,7 @@ const ProductCard = ({ product }) => {
           className={styles.decrementButton}
           onClick={decrementQuantity}
           disabled={quantity <= 1}
+          aria-label="Decrease quantity"
         >
           <FontAwesomeIcon icon={faMinus} />
         </button>
@@ -41,8 +42,9 @@ const ProductCard = ({ product }) => {
           value={quantity}
           onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
           min="1"
+          aria-label="Product quantity"
         />
-        <button className={styles.incrementButton} onClick={incrementQuantity}>
+        <button className={styles.incrementButton} onClick={incrementQuantity} aria-label="Increase quantity">
         <FontAwesomeIcon icon={faPlus} />
         </button>
       </div>
