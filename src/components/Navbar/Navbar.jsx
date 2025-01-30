@@ -11,7 +11,7 @@ const Navbar = () => {
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={styles.navbar} aria-label="Main site navigation" >
     {/* Navigation Links */}
     <ul className={styles.navList}>
       <li>
@@ -20,6 +20,8 @@ const Navbar = () => {
           className={`${styles.navLink} ${
             location.pathname === '/' ? styles.active : ''
           }`}
+            aria-current={location.pathname === '/' ? 'page' : undefined}
+            aria-label="Go to Home Page"
         >
           Home
         </Link>
@@ -30,6 +32,8 @@ const Navbar = () => {
           className={`${styles.navLink} ${
             location.pathname === '/shop' ? styles.active : ''
           }`}
+            aria-current={location.pathname === '/shop' ? 'page' : undefined}
+            aria-label="Go to Shop Page"
         >
           Shop
         </Link>
@@ -38,9 +42,11 @@ const Navbar = () => {
   
     {/* Cart Icon */}
     <div className={styles.cartContainer}>
-      <Link to="/cart" className={styles.cartLink}>
-        <FontAwesomeIcon icon={faShoppingCart} />
-        <span className={styles.cartCount}>{totalItems}</span>
+      <Link to="/cart" className={styles.cartLink}
+      aria-label={`Shopping Cart, ${totalItems} items`}
+      >
+        <FontAwesomeIcon icon={faShoppingCart} aria-hidden="true" />
+        <span className={styles.cartCount} aria-hidden="true">{totalItems}</span>
       </Link>
     </div>
   </nav>
