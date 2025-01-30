@@ -1,9 +1,9 @@
-.footer {
+/* .footer {
   background-color: #333;
   color: #fff;
   padding: 2rem;
   text-align: center;
-  margin-top: auto; /* Ensures it stays at the bottom */
+  margin-top: auto; 
   margin-bottom: 1rem;
 }
 
@@ -44,4 +44,82 @@
 
 .footerIcon:hover {
   color: #ff7e5f;
+} */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: clamp(1rem, 3vw, 2rem);
+  text-align: center;
+  margin-top: auto; /* Ensures it stays at the bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Ensures wrapping on small screens */
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: #ff7e5f;
+  font-weight: bold;
+  transition: color 0.3s ease, text-decoration 0.2s ease;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+}
+
+.footerLink:hover,
+.footerLink:focus {
+  color: #fff;
+  text-decoration: underline;
+  outline: 2px solid #ff7e5f; /* Improves accessibility */
+}
+
+/* ✅ Social Media Icons */
+.footerSocial {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin-bottom: 1rem;
+}
+
+.footerIcon {
+  color: #fff;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footerIcon:hover,
+.footerIcon:focus {
+  color: #ff7e5f;
+  transform: scale(1.1);
+  outline: 2px solid #ff7e5f; /* Accessibility improvement */
+}
+
+/* ✅ Footer Bottom Text */
+.footerBottom {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  color: #aaa;
+  text-align: center;
+  margin-top: 0;
+}
+
+.footerBottom p{
+  margin-top: 0;
+  padding-bottom: 2rem;
+}
+
+/* 📱 Mobile Adjustments */
+@media (max-width: 600px) {
+  .footerLinks,
+  .footerSocial {
+    flex-direction: column; /* Stack links/icons on mobile */
+    align-items: center;
+  }
 }

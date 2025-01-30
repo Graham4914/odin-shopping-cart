@@ -19,16 +19,16 @@ const Footer = () => {
         </Link>
       </div>
       <div className={styles.footerSocial}>
-        <a href="https://facebook.com" className={styles.footerIcon} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faFacebook} />
-        </a>
-        <a href="https://instagram.com" className={styles.footerIcon} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faInstagram} />
-        </a>
-        <a href="https://twitter.com" className={styles.footerIcon} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faTwitter} />
-        </a>
-      </div>
+  <a href="https://facebook.com" className={styles.footerIcon} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+    <FontAwesomeIcon icon={faFacebook} />
+  </a>
+  <a href="https://instagram.com" className={styles.footerIcon} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+    <FontAwesomeIcon icon={faInstagram} />
+  </a>
+  <a href="https://twitter.com" className={styles.footerIcon} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Twitter">
+    <FontAwesomeIcon icon={faTwitter} />
+  </a>
+</div>
       <div className={styles.footerBottom}>
         <p>© 2025 Your Store. All rights reserved.</p>
       </div>
