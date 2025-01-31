@@ -104,18 +104,28 @@ useEffect(() => {
 
   return (
     
-      <div className={styles.shopPage}>
+    <div className={`${styles.shopPage} ${isOpen ? styles.filterOpen : ""}`}>
+
+         {/* ✅ Background Overlay to Prevent Accidental Clicks */}
+    {isOpen && <div className={styles.filterOverlay} onClick={() => setIsOpen(false)}></div>}
+
 
       <button className={styles.filterToggleButton}
        onClick={() => setIsOpen(!isOpen)}
+      aria-expanded={isOpen}
+      aria-controls="filterPanel"
+
        ><FontAwesomeIcon icon={faFilter} />
         {isOpen ? "Close" : "Show"}
     </button>
 
+
+   
         {/* Sidebar (Filter Panel) */}
         <div className={`${styles.filterPanelWrapper} ${isOpen ? styles.open : ""}`}>
           <FilterPanel
             isOpen={isOpen}
+            onClose={() => setIsOpen(false)} 
             categories={categories}
             onApplyFilters={handleApplyFilters}
             onResetFilters={handleResetFilters}

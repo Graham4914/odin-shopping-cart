@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'; // Added useEffect
 import styles from './FilterPanel.module.css';
 
-const FilterPanel = ({ categories = [], onApplyFilters, isOpen, onResetFilters, initialCategory = '' }) => {
+const FilterPanel = ({ categories = [], onApplyFilters, isOpen,onClose, onResetFilters, initialCategory = '' }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedPriceRange, setSelectedPriceRange] = useState([0, Infinity]);
   const isInitialCategoryApplied = useRef(false);
@@ -33,7 +33,14 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen, onResetFilters, 
   };
 
   return (
-    <div className={`${styles.filterPanel} ${isOpen ? styles.open : ""}`}>
+    
+   
+
+    <div className={`${styles.filterPanel} ${isOpen ? styles.open : ""}`}
+     role="dialog"
+     aria-labelledby="filterHeading"
+     aria-hidden={!isOpen}
+     >
       <h3 className={styles.filterHeading}>Filters</h3>
 
       {/* Category Filter */}
@@ -42,12 +49,14 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen, onResetFilters, 
         <ul className={styles.filterList}>
           {categories.map((category) => (
             <li key={category} className={styles.filterItem}>
-              <label>
+              <label htmlFor={`category-${category}`}>
                 <input
+                  id={`category-${category}`}
                   type="checkbox"
                   value={category}
                   checked={selectedCategories.includes(category)}
                   onChange={() => handleCategoryChange(category)}
+                  aria-labelledby={`category-${category}`}
                 />
                 {category}
               </label>
@@ -58,7 +67,7 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen, onResetFilters, 
 
       {/* Price Range Filter */}
       <div className={styles.filterSection}>
-        <h4 className={styles.filterLabel}>Price Range</h4>
+        <h4 id="priceRangeHeading" className={styles.filterLabel}>Price Range</h4>
         <ul className={styles.filterList}>
           {[
             [0, Infinity], // "All prices"
@@ -68,7 +77,7 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen, onResetFilters, 
             [200, Infinity], // "$200+"
           ].map((range) => (
             <li key={range.toString()} className={styles.filterItem}>
-              <label>
+              <label htmlFor={`price-${range[0]}-${range[1]}`}>
                 <input
                   type="radio"
                   name="priceRange"
@@ -78,6 +87,7 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen, onResetFilters, 
                     selectedPriceRange[1] === range[1]
                   }
                   onChange={() => handlePriceRangeChange(range)}
+                  aria-labelledby={`price-${range[0]}-${range[1]}`}
                 />
                 {range[1] === Infinity
                   ? `$${range[0]}+`
@@ -89,11 +99,13 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen, onResetFilters, 
       </div>
 
       {/* Reset Filters Button */}
-      <button className={styles.resetButton} onClick={onResetFilters}>
+      <button className={styles.resetButton} onClick={onResetFilters}
+      aria-label="Reset all applied filters"
+      >
         Reset Filters
       </button>
     </div>
-
+  
   );
 };
 

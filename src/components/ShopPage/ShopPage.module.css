@@ -32,6 +32,19 @@
     left: 0;
   }
 }
+.filterOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent */
+  z-index: 1002; /* ✅ Make sure this is above the products and filter panel */
+  display: none;
+}
+.filterOverlay.open {
+  display: block;
+}
 
 
 @media (min-width: 801px) {
@@ -42,7 +55,10 @@
 }
 
 
-
+.shopPage.filterOpen .shopContent {
+  pointer-events: none; /* Prevent clicks on products */
+  opacity: 0.5; /* Optional: Fades out the products */
+}
 
 
 
@@ -53,7 +69,8 @@
   flex-direction: column;
   margin: 0;
   padding-bottom: 20px;
-  min-height: 0; /* Prevent scroll clipping */
+  min-height: 0;
+  transition: opacity 0.3s ease; 
 }
 
 /* Header Section */
