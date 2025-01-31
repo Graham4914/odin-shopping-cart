@@ -111,12 +111,14 @@
     background-color: #ddd;
   }
   
+  
   .quantityInput {
-    width: 60px;
+    width: 50px;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 0.5rem;
+    font-size: 1rem;
   }
   
   /* Add to Cart Button */

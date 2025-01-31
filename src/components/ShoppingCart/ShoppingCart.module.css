@@ -96,16 +96,6 @@
   padding: 0.25rem;
 }
 
-/* .decrementButton,
-.incrementButton {
-  width: 30px; 
-  height: 30px;
-  background-color: #f3f3f3;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-} */
 
 .decrementButton,
 .incrementButton {
