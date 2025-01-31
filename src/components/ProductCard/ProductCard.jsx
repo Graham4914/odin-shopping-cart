@@ -20,13 +20,17 @@ const ProductCard = ({ product, index }) => {
     setQuantity((prev) => Math.max(1, prev - 1));
 
 
+  const getOptimizedImageUrl = (url, width = 320) => {
+    return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_${width},q_auto,f_auto/${encodeURIComponent(url)}`;
+  };
+
   return (
     <div className={styles.productCard} role="group" aria-labelledby={`product-title-${product.id}`}>
 
       <Link to={`/product/${product.id}`} state={{ product }} className={styles.productLink}>
       <div className={styles.productImageContainer}>
       <img
-        src={product.image}
+        src={getOptimizedImageUrl(product.image, 320)}
         alt={product.title}
         className={styles.productImage}
         loading={index < 4 ? "eager" : "lazy"}

@@ -24,8 +24,8 @@
 
 .productImageContainer {
   aspect-ratio: 4 / 3; 
-  min-height: 150px; 
-  max-height: 220px; 
+  min-height: 200px; 
+  max-height: 250px; 
   overflow: hidden;
   border-radius: 8px; 
   width: 100%;
