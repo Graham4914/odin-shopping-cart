@@ -189,12 +189,12 @@
   .cartContent {
       display: flex;
       flex-direction: column; /* Stack items vertically */
-      width: 100%;
+      
   }
 
-  .cartList {
+  /* .cartList {
       width: 100%;
-  }
+  } */
 
   .summarySection {
       width: 100%;
