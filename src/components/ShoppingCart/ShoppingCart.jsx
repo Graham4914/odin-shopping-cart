@@ -49,7 +49,7 @@ const ShoppingCart = () => {
                         value={item.quantity}
                         onChange={(e) => updateCartQuantity(item.id, Number(e.target.value))}
                         min="1"
-                        // aria-label={`Quantity of ${item.title}`}
+                        aria-label={`Quantity of ${item.title}`}
                       />
                       <button
                         className={styles.incrementButton}
