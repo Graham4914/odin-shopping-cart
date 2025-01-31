@@ -20,7 +20,7 @@ const ProductDetails = () => {
 const handleAddToCart = () => {
     addToCart(product, quantity);
     setFeedbackMessage('Added to Cart!');
-    setTimeout(() => setFeedbackMessage(''), 1500); // Clear message after 2 seconds
+    setTimeout(() => setFeedbackMessage(''), 2000); // Clear message after 2 seconds
 };
 
 const handleAddToCartAndNavigate = () => {
@@ -51,31 +51,44 @@ const handleAddToCartAndNavigate = () => {
           <p className={styles.productDescription}>{product.description}</p>
           <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
           <div className={styles.quantityControls}>
+          
             <button
               className={styles.decrementButton}
               onClick={decrementQuantity}
               disabled={quantity <= 1}
+              aria-label="Decrease quantity"
             >
                <FontAwesomeIcon icon={faMinus} />
             </button>
+
+            <label htmlFor="quantityInput" className="sr-only">Quantity:</label>
             <input
+              id="quantityInput"
               type="number"
               className={styles.quantityInput}
               value={quantity}
               onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
               min="1"
             />
-            <button className={styles.incrementButton} onClick={incrementQuantity}>
+            <button className={styles.incrementButton} onClick={incrementQuantity}
+            aria-label="Increase quantity"
+            >
                  <FontAwesomeIcon icon={faPlus} />
             </button>
           </div>
           <button
-             onClick={handleAddToCartAndNavigate}
+            onClick={handleAddToCart}
              className={styles.addToCartButton}
+             aria-label={`Add ${quantity} of ${product.title} to cart`}
           >
             Add to Cart
           </button>
-          {feedbackMessage && <p className={styles.feedbackMessage}>{feedbackMessage}</p>}
+
+          {/* Feedback Message with Reserved Space */}
+          <p className={styles.feedbackMessage} aria-live="polite" aria-atomic="true" role="status">
+            {feedbackMessage || <span>&nbsp;</span>} 
+          </p>
+
           <div className={styles.navigationButtons}>
             <button onClick={() => navigate('/shop')} className={styles.backButton}>
               Back to Shop
