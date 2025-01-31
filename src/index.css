@@ -31,3 +31,10 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+@supports (-webkit-touch-callout: none) {
+  .decrementButton, .incrementButton {
+    line-height: normal; /* iOS fix */
+    text-rendering: optimizeLegibility;
+  }
+}
