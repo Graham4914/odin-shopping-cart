@@ -11,7 +11,7 @@ const handleAddToCart = () => {
   toast.success(`${quantity} ${product.title} added to cart!`);
 };
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, index }) => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -19,10 +19,9 @@ const ProductCard = ({ product }) => {
   const decrementQuantity = () =>
     setQuantity((prev) => Math.max(1, prev - 1));
 
-  const getOptimizedImageUrl = (url, width = 320) => {
-    return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=${width}&output=webp`;
+  const getOptimizedImageUrl = (url) => {
+    return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=${window.innerWidth < 768 ? 220 : 320}&output=webp`;
   };
-
   return (
     <div className={styles.productCard} role="group" aria-labelledby={`product-title-${product.id}`}>
 
@@ -32,7 +31,7 @@ const ProductCard = ({ product }) => {
         src={getOptimizedImageUrl(product.image, 320)} // Adjust width as needed
         alt={product.title}
         className={styles.productImage}
-        loading='lazy'
+        loading={index < 4 ? "eager" : "lazy"}
       />
       </div>
       <h2 id={`product-title-${product.id}`} className={styles.productTitle}>{product.title}</h2>
