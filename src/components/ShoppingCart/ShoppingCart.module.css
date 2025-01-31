@@ -85,7 +85,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.5rem; /* Reduces space around controls */
+  margin-top: 0.5rem; 
 }
 
 .quantityInput {
@@ -121,6 +121,7 @@
   transition: background-color 0.2s ease;
   font-size: 1rem; /* Ensure icons don't shift */
   line-height: 1; /* Prevent extra space */
+  color: #333;
 }
 
 .decrementButton:hover,
