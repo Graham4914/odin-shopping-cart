@@ -39,6 +39,8 @@
 .productTitle {
   font-size: clamp(1rem, 2vw, 1.2rem);
   margin: 0.5rem 0;
+  font-weight: bold;
+  color: #333;
 }
 
 
@@ -113,6 +115,9 @@
     transform: scale(1.05);
   }
 
+  .addToCartButton:hover, .addToCartButton:focus {
+    outline: none;
+  }
   @media (max-width: 600px) {
     .productCard {
       max-width: 100%;
@@ -128,3 +133,17 @@
       width: 100%;
     }
   }
+
+  /*Focus styles*/
+
+  .productCard:focus-within {
+    outline: 3px solid #ff7e5f; /* High-contrast focus indicator */
+  }
+  
+  /* ✅ Improve Focus on Buttons */
+  button:focus, input:focus {
+    outline: 2px solid #ff7e5f;
+    box-shadow: 0 0 5px rgba(255, 126, 95, 0.5);
+  }
+
+  

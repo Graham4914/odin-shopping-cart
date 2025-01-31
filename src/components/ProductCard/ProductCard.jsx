@@ -15,7 +15,8 @@ const ProductCard = ({ product }) => {
     setQuantity((prev) => Math.max(1, prev - 1));
 
   return (
-    <div className={styles.productCard}>
+    <div className={styles.productCard} role="group" aria-labelledby={`product-title-${product.id}`}>
+
       <Link to={`/product/${product.id}`} state={{ product }} className={styles.productLink}>
       <div className={styles.productImageContainer}>
       <img
@@ -24,15 +25,17 @@ const ProductCard = ({ product }) => {
         className={styles.productImage}
       />
       </div>
-      <h2 className={styles.productTitle}>{product.title}</h2>
-      <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
+      <h2 id={`product-title-${product.id}`} className={styles.productTitle}>{product.title}</h2>
+      <p className={styles.productPrice} aria-label={`Price: $${product.price.toFixed(2)}`}>
+        ${product.price.toFixed(2)}
+      </p>
       </Link>
       <div className={styles.quantityControls}>
         <button
           className={styles.decrementButton}
           onClick={decrementQuantity}
           disabled={quantity <= 1}
-          aria-label="Decrease quantity"
+          aria-label={`Decrease quantity of ${product.title}`}
         >
           <FontAwesomeIcon icon={faMinus} />
         </button>
@@ -42,15 +45,16 @@ const ProductCard = ({ product }) => {
           value={quantity}
           onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
           min="1"
-          aria-label="Product quantity"
+          aria-label={`Quantity of ${product.title}`}
         />
-        <button className={styles.incrementButton} onClick={incrementQuantity} aria-label="Increase quantity">
+        <button className={styles.incrementButton} onClick={incrementQuantity} aria-label={`Increase quantity of ${product.title}`}>
         <FontAwesomeIcon icon={faPlus} />
         </button>
       </div>
       <button
         className={styles.addToCartButton}
         onClick={() => addToCart(product, quantity)}
+        aria-label={`Add ${quantity} of ${product.title} to cart`}
       >
         Add to Cart
       </button>
