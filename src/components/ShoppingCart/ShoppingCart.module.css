@@ -83,6 +83,7 @@
 .quantityControls {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   margin-top: 0.5rem; /* Reduces space around controls */
 }
@@ -95,15 +96,31 @@
   padding: 0.25rem;
 }
 
-.decrementButton,
+/* .decrementButton,
 .incrementButton {
-  width: 30px; /* Smaller, matching the input size */
+  width: 30px; 
   height: 30px;
   background-color: #f3f3f3;
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+} */
+
+.decrementButton,
+.incrementButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem; /* Ensure icons don't shift */
+  line-height: 1; /* Prevent extra space */
 }
 
 .decrementButton:hover,

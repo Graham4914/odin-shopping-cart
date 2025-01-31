@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './ProductDetails.module.css';
@@ -23,10 +23,6 @@ const handleAddToCart = () => {
     setTimeout(() => setFeedbackMessage(''), 2000); // Clear message after 2 seconds
 };
 
-const handleAddToCartAndNavigate = () => {
-  handleAddToCart(); // Adds to the cart and shows feedback
-  setTimeout(() => navigate('/cart'), 2000); // Navigate after showing feedback for 2 seconds
-};
 
 
   if (!product) {
@@ -40,6 +36,12 @@ const handleAddToCartAndNavigate = () => {
     return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_320,q_auto,f_webp/${encodeURIComponent(url)}`;
   };
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  
   return (
     <>
     <div className={styles.productDetailsPage}>
