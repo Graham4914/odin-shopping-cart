@@ -6,6 +6,8 @@ import ProductCard from '../ProductCard/ProductCard';
 import FilterPanel from '../FilterPanel/FilterPanel';
 import { fetchProducts } from '../../utils/api';
 import { useSearchParams, useLocation } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -42,6 +44,7 @@ useEffect(() => {
   // Fetch products from the API
   useEffect(() => {
     const loadProducts = async () => {
+      setLoading(true);
       const result = await fetchProducts();
       if (result.error) {
         setError(result.error);
@@ -149,6 +152,14 @@ useEffect(() => {
             ))}
           </div>
         </div>
+        <ToastContainer
+        position="bottom-right"
+        autoClose={3000} // 3 seconds fade-out
+        hideProgressBar={false} // Keep progress bar visible
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
       </div>
 
   );

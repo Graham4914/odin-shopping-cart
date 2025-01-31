@@ -4,7 +4,12 @@ import React, { useState } from 'react';
 import styles from './ProductCard.module.css';
 import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import { toast } from "react-toastify"; 
 
+const handleAddToCart = () => {
+  addToCart(product, quantity);
+  toast.success(`${quantity} ${product.title} added to cart!`);
+};
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -23,6 +28,7 @@ const ProductCard = ({ product }) => {
         src={product.image}
         alt={product.title}
         className={styles.productImage}
+        loading='lazy'
       />
       </div>
       <h2 id={`product-title-${product.id}`} className={styles.productTitle}>{product.title}</h2>
@@ -58,7 +64,9 @@ const ProductCard = ({ product }) => {
       >
         Add to Cart
       </button>
+     
     </div>
+    
   );
 };
 
