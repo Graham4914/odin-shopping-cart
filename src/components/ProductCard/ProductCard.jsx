@@ -21,9 +21,9 @@ const ProductCard = ({ product, index }) => {
 
 
   const getOptimizedImageUrl = (url, width = 320) => {
-    return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_${width},q_auto,f_auto/${encodeURIComponent(url)}`;
+    return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_${width},q_auto,f_webp/${encodeURIComponent(url)}`;
   };
-
+  
   return (
     <div className={styles.productCard} role="group" aria-labelledby={`product-title-${product.id}`}>
 
@@ -31,6 +31,9 @@ const ProductCard = ({ product, index }) => {
       <div className={styles.productImageContainer}>
       <img
         src={getOptimizedImageUrl(product.image, 320)}
+        width="320" 
+        height="240" 
+        style={{ aspectRatio: "4 / 3" }}
         alt={product.title}
         className={styles.productImage}
         loading={index < 4 ? "eager" : "lazy"}
