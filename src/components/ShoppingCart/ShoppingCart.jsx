@@ -16,6 +16,10 @@ const ShoppingCart = () => {
     alert('This is a mock store. Thank you for your purchase!');
   };
 
+  
+  const getOptimizedImageUrl = (url) => {
+    return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_320,q_auto,f_webp/${encodeURIComponent(url)}`;
+  };
   return (
     <div className={styles.shoppingCartContainer}>
       <div className={styles.shoppingCartContent}>
@@ -28,7 +32,12 @@ const ShoppingCart = () => {
             <div className={styles.cartList}>
               {cart.map((item) => (
                 <div key={item.id} className={styles.cartItem}>
-                  <img src={item.image} alt={item.title} className={styles.productImage} />
+                  <img 
+                  src={getOptimizedImageUrl(item.image)}
+                  alt={item.title}
+                  className={styles.productImage}
+                  loading="lazy"
+                  />
                   <div className={styles.productDetails}>
                     <h2 className={styles.productTitle}>{item.title}</h2>
                     <p className={styles.productPrice}>${item.price.toFixed(2)}</p>
