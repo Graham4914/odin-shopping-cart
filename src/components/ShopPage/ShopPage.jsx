@@ -136,8 +136,10 @@ useEffect(() => {
         {/* Main Content */}
         <div className={styles.shopContent}>
           {/* Header */}
-          <div className={styles.shopPageHeader}>
-            <h1>{selectedCategoryText}</h1>
+          <div className={styles.shopPageHeader} aria-live="polite">
+          <h1 id="shopHeading" aria-label={`Showing products for: ${selectedCategoryText}`}>
+              {selectedCategoryText}
+          </h1>
           </div>
 
           {/* Product List */}
