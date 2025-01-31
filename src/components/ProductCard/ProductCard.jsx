@@ -19,13 +19,17 @@ const ProductCard = ({ product }) => {
   const decrementQuantity = () =>
     setQuantity((prev) => Math.max(1, prev - 1));
 
+  const getOptimizedImageUrl = (url, width = 320) => {
+    return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=${width}&output=webp`;
+  };
+
   return (
     <div className={styles.productCard} role="group" aria-labelledby={`product-title-${product.id}`}>
 
       <Link to={`/product/${product.id}`} state={{ product }} className={styles.productLink}>
       <div className={styles.productImageContainer}>
       <img
-        src={product.image}
+        src={getOptimizedImageUrl(product.image, 320)} // Adjust width as needed
         alt={product.title}
         className={styles.productImage}
         loading='lazy'
