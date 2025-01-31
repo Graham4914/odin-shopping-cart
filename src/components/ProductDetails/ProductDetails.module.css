@@ -34,11 +34,11 @@
   }
   
   .productImage {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease; 
+    display: block;
+    width: 100%;  /* Take full width */
+    max-width: 100%; /* Prevent overflow */
+    height: auto; /* Maintain natural aspect ratio */
+    object-fit: contain; /* Ensure full image is visible */
   }
   .productImageWrapper:hover .productImage {
     transform: scale(1.02);

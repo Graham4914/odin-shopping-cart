@@ -36,13 +36,22 @@ const handleAddToCartAndNavigate = () => {
   const incrementQuantity = () => setQuantity(quantity + 1);
   const decrementQuantity = () => setQuantity((prev) => Math.max(1, prev - 1));
 
+  const getOptimizedImageUrl = (url) => {
+    return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_320,q_auto,f_webp/${encodeURIComponent(url)}`;
+  };
+
   return (
     <>
     <div className={styles.productDetailsPage}>
       <div className={styles.productContent}>
         {/* Left Column: Product Image */}
         <div className={styles.productImageWrapper}>
-          <img src={product.image} alt={product.title} className={styles.productImage} />
+          <img  
+           src={getOptimizedImageUrl(product.image)}
+          alt={product.title}    
+          className={styles.productImage}
+          loading="eager"
+          />
         </div>
 
         {/* Right Column: Product Info */}
