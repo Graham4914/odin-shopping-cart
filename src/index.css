@@ -13,6 +13,7 @@ html, body {
   padding: 0;
   
   overflow:hidden; /* Prevent body from scrolling */
+  overflow-x: hidden;
   box-sizing: border-box;
 }
 

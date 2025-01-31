@@ -6,6 +6,7 @@
   justify-content: center; /* Centers the cart content */
   padding: 2rem;
   background-color: #f9f9f9;
+  overflow-x: hidden;
 }
 
 .shoppingCartContent {
@@ -192,16 +193,16 @@
       
   }
 
-  /* .cartList {
-      width: 100%;
-  } */
+
 
   .summarySection {
-      width: 100%;
-      margin-top: 1.5rem;
+      width: 80%;
+      margin: 1.5rem;
       position: static; /* Remove sticky positioning */
       align-self: center; /* Center on mobile */
       text-align: center;
+      
+    
   }
 
   .checkoutButton {

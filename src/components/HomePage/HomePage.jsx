@@ -1,6 +1,6 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTshirt, faRing, faMobileAlt, faFemale } from '@fortawesome/free-solid-svg-icons';
+import { faShirt, faRing, faMobileAlt, faVestPatches } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HomePage.module.css';
@@ -23,12 +23,12 @@ const HomePage = () => {
   <h2 className={styles.categoryHeading}>Shop by Category</h2>
   <div className={styles.categoryGrid}>
   <Link to="/shop?category=Men%27s%20Clothing" className={styles.categoryTile} aria-label="Shop Men's Clothing">
-    <FontAwesomeIcon icon={faTshirt} className={styles.categoryIcon} />
+    <FontAwesomeIcon icon={faShirt} className={styles.categoryIcon} />
     <div className={styles.categoryContent}>Men's Clothing</div>
   </Link>
 
   <Link to="/shop?category=Women%27s%20Clothing" className={styles.categoryTile} aria-label="Shop Women's Clothing">
-    <FontAwesomeIcon icon={faFemale} className={styles.categoryIcon} />
+    <FontAwesomeIcon icon={faVestPatches} className={styles.categoryIcon} />
     <div className={styles.categoryContent}>Women's Clothing</div>
   </Link>
 
