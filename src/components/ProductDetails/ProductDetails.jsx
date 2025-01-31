@@ -47,7 +47,7 @@ const handleAddToCartAndNavigate = () => {
         {/* Left Column: Product Image */}
         <div className={styles.productImageWrapper}>
           <img  
-           src={getOptimizedImageUrl(product.image)}
+          src={getOptimizedImageUrl(product.image)}
           alt={product.title}    
           className={styles.productImage}
           loading="eager"

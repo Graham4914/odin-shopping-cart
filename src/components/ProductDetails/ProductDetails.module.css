@@ -39,6 +39,8 @@
     max-width: 100%; /* Prevent overflow */
     height: auto; /* Maintain natural aspect ratio */
     object-fit: contain; /* Ensure full image is visible */
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
   }
   .productImageWrapper:hover .productImage {
     transform: scale(1.02);
