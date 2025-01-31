@@ -55,7 +55,8 @@
 .productImage {
   width: 80px;
   height: 80px;
-  object-fit: cover;
+  object-fit: cover; /* Ensures it fills the space */
+  object-position: top center; /* Adjusts visible portion */
   margin-right: 1rem;
   border-radius: 4px;
 }
@@ -134,7 +135,8 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 20px; /* Keeps it in view when scrolling */
-  align-self: start; /* Aligns it with the top of the product list */
+  align-self: start; 
+  min-height: 150px;
 }
 
 .summaryHeading {

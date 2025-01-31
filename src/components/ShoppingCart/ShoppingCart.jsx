@@ -21,7 +21,7 @@ const ShoppingCart = () => {
       <div className={styles.shoppingCartContent}>
         <h1 className={styles.heading}>Your Shopping Cart</h1>
         {cart.length === 0 ? (
-          <p className={styles.emptyMessage}>Your cart is empty.</p>
+          <p className={styles.emptyMessage} role="alert">Your cart is empty.</p>
         ) : (
           <div className={styles.cartContent}>
             {/* Product List */}
@@ -38,9 +38,11 @@ const ShoppingCart = () => {
                         className={styles.decrementButton}
                         onClick={() => updateCartQuantity(item.id, Math.max(1, item.quantity - 1))}
                         disabled={item.quantity <= 1}
+                        aria-label={`Decrease quantity of ${item.title}`}
                       >
                         <FontAwesomeIcon icon={faMinus} />
                       </button>
+                      <label htmlFor={`quantityInput-${item.id}`} className="sr-only">Quantity of {item.title}</label>
                       <input
                         type="number"
                         className={styles.quantityInput}
@@ -51,6 +53,7 @@ const ShoppingCart = () => {
                       <button
                         className={styles.incrementButton}
                         onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
+                        aria-label={`Increase quantity of ${item.title}`}
                       >
                         <FontAwesomeIcon icon={faPlus} />
                       </button>
@@ -58,6 +61,7 @@ const ShoppingCart = () => {
                     <button
                       className={styles.removeButton}
                       onClick={() => removeFromCart(item.id)}
+                      aria-label={`Remove ${item.title} from cart`}
                     >
                       Remove
                     </button>
@@ -71,7 +75,7 @@ const ShoppingCart = () => {
             <div className={styles.summarySection}>
               <h2 className={styles.summaryHeading}>Order Summary</h2>
               <p className={styles.summaryText}>Total Items: {totalItems}</p>
-              <p className={styles.summaryText}>Total Cost: ${totalCost.toFixed(2)}</p>
+              <p className={styles.summaryText} aria-live="polite">Total Cost: ${totalCost.toFixed(2)}</p>
               <button className={styles.checkoutButton} onClick={handleCheckout}>
                 Proceed to Checkout
               </button>
