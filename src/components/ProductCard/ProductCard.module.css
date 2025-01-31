@@ -101,8 +101,8 @@
   .addToCartButton {
     margin-top: 10px;
     padding: clamp(0.5rem, 1.5vw, 1rem) clamp(1rem, 3vw, 1.5rem);
-    background-color: #28a745;
-    color: white;
+    background-color: #007b00;
+    color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -111,8 +111,12 @@
   }
   
   .addToCartButton:hover {
-    background-color: #218838;
+    background-color: #005a00;
     transform: scale(1.05);
+
+    ._addToCartButton_10vkj_101:active {
+      background-color: #004500; 
+    }
   }
 
   .addToCartButton:hover, .addToCartButton:focus {
