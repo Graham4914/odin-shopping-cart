@@ -2,13 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 4rem; /* Adjust size as needed */
+    width: 4rem;
     height: 1.5rem;
-    border: 2px solid orange; /* Use your project's orange */
-    color: white; /* Change to orange if preferred */
+    border: 2px solid orange; 
+    color: white; 
     font-weight: bold;
     font-size: .8rem;
-    border-radius: 10%; /* Makes it a circle */
+    border-radius: 10%; 
     text-transform: uppercase;
   }
   

@@ -4,14 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './ProductDetails.module.css';
-import { toast } from 'react-toastify';
 import { ToastContainer } from "react-toastify";
 
 
 
 const ProductDetails = () => {
-  const { state } = useLocation(); // Access product details passed via Link state
-  const { product } = state || {}; // Handle undefined state gracefully
+  const { state } = useLocation(); 
+  const { product } = state || {}; 
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
   const navigate = useNavigate();
@@ -22,12 +21,7 @@ const ProductDetails = () => {
   }
 
   const handleAddToCart = () => {
-    console.log("handleAddToCart fired!");
-    console.log("Trying to fire toast notification...");
-    
-    console.log("Product being added:", product);
     addToCart(product, quantity);
-    console.log("Quantity:", quantity);
 };
 
   const incrementQuantity = () => setQuantity(quantity + 1);
@@ -43,7 +37,7 @@ const ProductDetails = () => {
     
     <div className={styles.productDetailsPage}>
       <div className={styles.productContent}>
-        {/* Left Column: Product Image */}
+       
         <div className={styles.productImageWrapper}>
           <img  
            src={getOptimizedImageUrl(product.image)}
@@ -53,7 +47,7 @@ const ProductDetails = () => {
           />
         </div>
 
-        {/* Right Column: Product Info */}
+        
         <div className={styles.productInfo}>
           <h1 className={styles.productTitle}>{product.title}</h1>
           <p className={styles.productDescription}>{product.description}</p>
@@ -86,7 +80,6 @@ const ProductDetails = () => {
           </div>
           <button
            onClick={() => {
-            console.log("Button clicked! Running handleAddToCart...");
             handleAddToCart();
           }} 
           className={styles.addToCartButton}

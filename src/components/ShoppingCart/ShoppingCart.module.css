@@ -1,16 +1,14 @@
-/* ShoppingCart.module.css */
-
 
 .shoppingCartContainer {
   display: flex;
-  justify-content: center; /* Centers the cart content */
+  justify-content: center; 
   padding: 2rem;
   background-color: #f9f9f9;
   overflow-x: hidden;
 }
 
 .shoppingCartContent {
-  flex: 1; /* Push the footer down */
+  flex: 1; 
   padding: 1rem;
   background-color: #f3f3f3;
   color: #222;
@@ -35,7 +33,7 @@
 
 .cartContent {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Product list takes up more space */
+  grid-template-columns: 2fr 1fr; 
   gap: 2rem;
   box-sizing: border-box;
 }
@@ -59,8 +57,8 @@
 .productImage {
   width: 80px;
   height: 80px;
-  object-fit: cover; /* Ensures it fills the space */
-  object-position: top center; /* Adjusts visible portion */
+  object-fit: cover; 
+  object-position: top center; 
   margin-right: 1rem;
   border-radius: 4px;
 }
@@ -89,7 +87,7 @@
 }
 
 .quantityInput {
-  width: 40px; /* More compact */
+  width: 40px; 
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -109,8 +107,8 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-size: 1rem; /* Ensure icons don't shift */
-  line-height: 1; /* Prevent extra space */
+  font-size: 1rem; 
+  line-height: 1; 
   color: #333;
 }
 
@@ -124,11 +122,11 @@
 .itemActions {
   display: flex;
   align-items: center;
-  gap: 1rem; /* Adjust spacing */
+  gap: 1rem; 
 }
 
 .removeButton {
-  margin-left: auto; /* Push it to the right */
+  margin-left: auto; 
   background-color: #b30000;
   color: #ffffff;
   font-size: clamp(0.60rem, 1vw, .9rem); 
@@ -151,7 +149,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 20px; /* Keeps it in view when scrolling */
+  top: 20px; 
   align-self: start; 
   min-height: 150px;
 }
@@ -197,7 +195,7 @@
 }
   .cartContent {
       display: flex;
-      flex-direction: column; /* Stack items vertically */
+      flex-direction: column; 
       
   }
 
@@ -206,8 +204,8 @@
   .summarySection {
       width: 80%;
       margin: 1.5rem;
-      position: static; /* Remove sticky positioning */
-      align-self: center; /* Center on mobile */
+      position: sticky; 
+      align-self: center; 
       text-align: center;
       
     

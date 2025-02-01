@@ -5,7 +5,7 @@ import App from '../App';
 
 describe('App Component', () => {
   it('renders Navbar and routes correctly', () => {
-    // Wrap the App component with BrowserRouter
+   
     render(
       <BrowserRouter>
         <App />

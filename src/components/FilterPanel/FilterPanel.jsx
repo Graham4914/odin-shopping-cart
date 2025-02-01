@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'; // Added useEffect
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './FilterPanel.module.css';
 
 const FilterPanel = ({ categories = [], onApplyFilters, isOpen,onClose, onResetFilters, initialCategory = '' }) => {
@@ -7,21 +7,18 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen,onClose, onResetF
   const isInitialCategoryApplied = useRef(false);
   
  
-
-
-  // Sync initial category with selectedCategories
   useEffect(() => {
     if (initialCategory && !isInitialCategoryApplied.current) {
-      setSelectedCategories([initialCategory]); // Pre-select the category
-      onApplyFilters({ categories: [initialCategory], priceRange: selectedPriceRange }); // Trigger filters
-      isInitialCategoryApplied.current = true; // Mark as applied
+      setSelectedCategories([initialCategory]); 
+      onApplyFilters({ categories: [initialCategory], priceRange: selectedPriceRange }); 
+      isInitialCategoryApplied.current = true; 
     }
   }, [initialCategory, selectedPriceRange, onApplyFilters]);
 
   const handleCategoryChange = (category) => {
     const updatedCategories = selectedCategories.includes(category)
-      ? selectedCategories.filter((item) => item !== category) // Remove category if already selected
-      : [...selectedCategories, category]; // Add category if not selected
+      ? selectedCategories.filter((item) => item !== category) 
+      : [...selectedCategories, category]; 
 
     setSelectedCategories(updatedCategories);
     onApplyFilters({ categories: updatedCategories, priceRange: selectedPriceRange });
@@ -32,10 +29,14 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen,onClose, onResetF
     onApplyFilters({ categories: selectedCategories, priceRange: range });
   };
 
-  return (
-    
-   
+  const handleResetFilters = () => {
+    setSelectedCategories([]); 
+    setSelectedPriceRange([0, Infinity]); 
+    onApplyFilters({ categories: [], priceRange: [0, Infinity] }); 
+  };
+  
 
+  return (
     <div className={`${styles.filterPanel} ${isOpen ? styles.open : ""}`}
      role="dialog"
      aria-labelledby="filterHeading"
@@ -43,7 +44,7 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen,onClose, onResetF
      >
       <h3 className={styles.filterHeading}>Filters</h3>
 
-      {/* Category Filter */}
+   
       <div className={styles.filterSection}>
         <h4 className={styles.filterLabel}>Category</h4>
         <ul className={styles.filterList}>
@@ -65,16 +66,16 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen,onClose, onResetF
         </ul>
       </div>
 
-      {/* Price Range Filter */}
+    
       <div className={styles.filterSection}>
         <h4 id="priceRangeHeading" className={styles.filterLabel}>Price Range</h4>
         <ul className={styles.filterList}>
           {[
-            [0, Infinity], // "All prices"
-            [0, 50], // "$0 - $50"
-            [50, 100], // "$50 - $100"
-            [100, 200], // "$100 - $200"
-            [200, Infinity], // "$200+"
+            [0, Infinity], 
+            [0, 50], 
+            [50, 100], 
+            [100, 200], 
+            [200, Infinity], 
           ].map((range) => (
             <li key={range.toString()} className={styles.filterItem}>
               <label htmlFor={`price-${range[0]}-${range[1]}`}>
@@ -98,8 +99,8 @@ const FilterPanel = ({ categories = [], onApplyFilters, isOpen,onClose, onResetF
         </ul>
       </div>
 
-      {/* Reset Filters Button */}
-      <button className={styles.resetButton} onClick={onResetFilters}
+    
+      <button className={styles.resetButton} onClick={handleResetFilters}
       aria-label="Reset all applied filters"
       >
         Reset Filters

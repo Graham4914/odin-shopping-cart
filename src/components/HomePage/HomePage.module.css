@@ -47,7 +47,7 @@ body, .heroBanner {
 
 
 .ctaButton {
-  background-color: #264653; /* Stronger orange for better contrast */
+  background-color: #264653; 
   color: white;
   padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem);
   font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -72,8 +72,8 @@ body, .heroBanner {
 
 .categoriesSection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
-  gap: clamp(0.5rem, 2vw, 1.5rem); /* Dynamic spacing */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: clamp(0.5rem, 2vw, 1.5rem); 
   max-width: 1200px;
   margin: 0 auto;
   padding: clamp(1rem, 4vw, 2rem);
@@ -87,11 +87,11 @@ body, .heroBanner {
 }
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-resizing columns */
-  gap: clamp(0.5rem, 2vw, 1.5rem); /* Dynamic spacing */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: clamp(0.5rem, 2vw, 1.5rem); 
   max-width: 1200px;
-  width: 90%; /* Constrain width for better centering */
-  margin: 0 auto; /* Centers the grid */
+  width: 90%; 
+  margin: 0 auto; 
   padding: clamp(1rem, 4vw, 2rem);
 }
 

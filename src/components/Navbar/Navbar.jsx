@@ -2,13 +2,13 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { useCart } from '../../context/CartContext'; // Import CartContext
+import { useCart } from '../../context/CartContext'; 
 import Logo from '../Logo/Logo';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const { cart } = useCart();
-  const location = useLocation(); // Get the current route
+  const location = useLocation(); 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
@@ -17,9 +17,8 @@ const Navbar = () => {
        <Logo /> 
        </div>
 
-    {/* Navigation Links */}
   
-    <ul className={styles.navList}>
+   <ul className={styles.navList}>
       <li>
         <Link
           to="/"

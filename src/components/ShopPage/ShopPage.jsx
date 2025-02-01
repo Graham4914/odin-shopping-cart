@@ -21,7 +21,7 @@ const ShopPage = () => {
   const [searchParams] = useSearchParams();
   const categoryFromState = location.state?.initialCategory || "";
   const categoryFromQuery = searchParams.get("category") || "";
-  const category = categoryFromState || categoryFromQuery; // Prefer state over query
+  const category = categoryFromState || categoryFromQuery; 
   const categories = ['Men\'s Clothing', 'Women\'s Clothing', 'Jewelery', 'Electronics'];
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,7 +32,7 @@ const ShopPage = () => {
 
 useEffect(() => {
   if (initialMount && category) {
-    // On first load, if there's a category from the URL, use it.
+   
     setFilters((prev) => ({
       ...prev,
       categories: [...new Set([...prev.categories, category])],
@@ -41,7 +41,7 @@ useEffect(() => {
   setInitialMount(false);
 }, [initialMount, category]);
 
-  // Fetch products from the API
+
   useEffect(() => {
     const loadProducts = async () => {
       setLoading(true);
@@ -50,7 +50,7 @@ useEffect(() => {
         setError(result.error);
       } else {
         setProducts(result);
-        setFilteredProducts(result); // Show all products initially
+        setFilteredProducts(result); 
       }
       setLoading(false);
     };
@@ -59,19 +59,16 @@ useEffect(() => {
   }, []);
 
   
-  // Apply filters to the product list
   useEffect(() => {
     const applyFilters = () => {
       let updatedProducts = [...products];
 
-      // Filter by categories
       if (filters.categories.length > 0) {
         updatedProducts = updatedProducts.filter((product) =>
           filters.categories.some((cat) => cat.toLowerCase() === product.category.toLowerCase())
         );
       }
 
-      // Filter by price range
       updatedProducts = updatedProducts.filter(
         (product) =>
           product.price >= filters.priceRange[0] &&
@@ -108,8 +105,6 @@ useEffect(() => {
   return (
     
     <div className={`${styles.shopPage} ${isOpen ? styles.filterOpen : ""}`}>
-
-         {/* ✅ Background Overlay to Prevent Accidental Clicks */}
     {isOpen && <div className={styles.filterOverlay} onClick={() => setIsOpen(false)}></div>}
 
 
@@ -124,7 +119,7 @@ useEffect(() => {
 
 
    
-        {/* Sidebar (Filter Panel) */}
+       
         <div className={`${styles.filterPanelWrapper} ${isOpen ? styles.open : ""}`}>
           <FilterPanel
             isOpen={isOpen}
@@ -132,20 +127,20 @@ useEffect(() => {
             categories={categories}
             onApplyFilters={handleApplyFilters}
             onResetFilters={handleResetFilters}
-            initialCategory={category} // Pass the initial category from query parameters
+            initialCategory={category} 
           />
         </div>
 
-        {/* Main Content */}
+       
         <div className={styles.shopContent}>
-          {/* Header */}
+          
           <div className={styles.shopPageHeader} aria-live="polite">
           <h1 id="shopHeading" aria-label={`Showing products for: ${selectedCategoryText}`}>
               {selectedCategoryText}
           </h1>
           </div>
 
-          {/* Product List */}
+         
           <div className={styles.productList}>
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -154,8 +149,8 @@ useEffect(() => {
         </div>
         <ToastContainer
         position="bottom-right"
-        autoClose={3000} // 3 seconds fade-out
-        hideProgressBar={false} // Keep progress bar visible
+        autoClose={3000} 
+        hideProgressBar={false} 
         closeOnClick
         pauseOnHover
         draggable

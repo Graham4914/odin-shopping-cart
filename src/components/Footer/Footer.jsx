@@ -33,7 +33,6 @@ const Footer = () => {
       <div className={styles.footerBottom}>
         <p>© 2025 G-Store. All rights reserved.</p>
       </div>
-             {/* GitHub Icon and Credit */}
              <div className="styles.githubLink">
         <a href="https://github.com/Graham4914/odin-shopping-cart"
            target="_blank" 

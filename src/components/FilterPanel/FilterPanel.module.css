@@ -10,8 +10,6 @@
   
 }
 
-
-
 .filterHeading {
   font-size: 1.8rem;
   font-weight: bold;
@@ -112,7 +110,7 @@
 @media (max-width: 768px) {
   .filterPanel {
       position: fixed;
-      left: -100%; /* Initially hidden */
+      left: -100%; 
       top: 3rem;
       width: 250px;
       height: 100vh;
@@ -122,13 +120,12 @@
       z-index: 1000;
   }
 
-  /* ✅ This will slide in when `isOpen` is true */
   .filterPanel.open {
       left: 0;
   }
 
   .shopContent {
-    margin-left: 0; /* Prevents pushing content on mobile */
+    margin-left: 0; 
   }
 }
  

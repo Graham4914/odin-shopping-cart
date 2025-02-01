@@ -3,7 +3,7 @@
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: space-between; /* ✅ Keeps logo, nav, and cart spaced correctly */
+  justify-content: space-between; 
   align-items: center;
   background-color: #333;
   color: white;
@@ -20,17 +20,17 @@
 }
 
 .navList {
-  flex-grow: 2; /* Makes sure nav stays centered */
+  flex-grow: 2; 
   display: flex;
   list-style: none;
   padding: 0;
-  justify-content: center; /* Ensures nav links are perfectly centered */
+  justify-content: center; 
   gap: 2rem;
 }
 
 .cartWrapper {
   display: flex;
-  flex: 1; /* Takes up equal space */
+  flex: 1; 
   justify-content: flex-end;
   align-items: center;
 }
@@ -51,13 +51,13 @@
   color: #ff7e5f;
 }
 
-/* Cart container sits on the far right, next to .navCenter */
+
 .cartContainer {
   display: flex;
   align-items: center;
 }
 
-/* Cart icon link + badge */
+
 .cartLink {
   display: inline-flex;
   align-items: center;

@@ -1,10 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { toast } from 'react-toastify'; 
 
-// Create CartContext
+
 const CartContext = createContext();
 
-// CartProvider Component
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
@@ -53,7 +52,6 @@ const CartProvider = ({ children }) => {
 
 const useCart = () => {
   const context = useContext(CartContext);
-  console.log('useCart context:', context); // Debug log
   if (!context) {
     throw new Error('useCart must be used within a CartProvider');
   }

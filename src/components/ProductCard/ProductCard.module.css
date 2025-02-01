@@ -1,4 +1,4 @@
-/* ProductCard.module.css */
+
 .productCard {
   width: 100%; 
   max-width: 280px; 
@@ -60,8 +60,6 @@
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
-
-
 
 
 .decrementButton,
@@ -147,15 +145,15 @@
     }
   }
 
-  /*Focus styles*/
+
 
   .productCard:focus-within {
-    outline: 3px solid #ff7e5f; /* High-contrast focus indicator */
+    outline: 3px solid #ff7e5f; 
   }
   
-  /* ✅ Improve Focus on Buttons */
+ 
   button:focus, input:focus {
-    outline: 2px solid #ff7e5f;
+    outline: 1px solid #ff7e5f;
     box-shadow: 0 0 5px rgba(255, 126, 95, 0.5);
   }
 

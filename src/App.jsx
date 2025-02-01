@@ -9,17 +9,16 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import styles from './App.module.css';
 import Footer from './components/Footer/Footer';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
-    <CartProvider> {/* CartProvider wraps the entire app */}
+    <CartProvider> 
     <Navbar />
     <ScrollToTop />
-     <div className={styles.appContainer}> {/* Flexbox container */}
+     <div className={styles.appContainer}> 
         
-        <main className={styles.mainContent}> {/* Main content area */}
+        <main className={styles.mainContent}> 
         
         <Routes>
           <Route path="/" element={<HomePage />} />

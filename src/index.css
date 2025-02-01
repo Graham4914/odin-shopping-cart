@@ -12,14 +12,13 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  /* overflow-x: hidden; */
   box-sizing: border-box;
 }
 
 body {
   min-width: 320px;
   font-family: inherit;
-  background-color: #f9f9f9; /* Optional background */
+  background-color: #f9f9f9; 
 }
 
 a {
@@ -42,7 +41,7 @@ a:hover {
   }
 }
 ::-webkit-scrollbar {
-  width: 0px;  /* or 0 if you want to hide it entirely */
+  width: 0px;  
 }
 ::-webkit-scrollbar-track {
   background: transparent;

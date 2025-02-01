@@ -8,7 +8,6 @@ import { useCart } from '../../context/CartContext';
 const ShoppingCart = () => {
   const { cart, removeFromCart, updateCartQuantity } = useCart();
 
-  // Calculate total items and cost
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   const totalCost = cart.reduce((total, item) => total + item.quantity * item.price, 0);
 
@@ -28,7 +27,7 @@ const ShoppingCart = () => {
           <p className={styles.emptyMessage} role="alert">Your cart is empty.</p>
         ) : (
           <div className={styles.cartContent}>
-            {/* Product List */}
+           
             <div className={styles.cartList}>
               {cart.map((item) => (
                 <div key={item.id} className={styles.cartItem}>
@@ -81,7 +80,7 @@ const ShoppingCart = () => {
               ))}
             </div>
 
-            {/* Order Summary */}
+          
             <div className={styles.summarySection}>
               <h2 className={styles.summaryHeading}>Order Summary</h2>
               <p className={styles.summaryText}>Total Items: {totalItems}</p>

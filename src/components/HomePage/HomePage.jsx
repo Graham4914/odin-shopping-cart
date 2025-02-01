@@ -42,14 +42,8 @@ const HomePage = () => {
     <div className={styles.categoryContent}>Electronics</div>
   </Link>
 </div>
-
 </section>
-
-
-     
-     
     </div>
-   
     </>
   );
 };
