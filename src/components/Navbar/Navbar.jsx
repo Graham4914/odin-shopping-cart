@@ -35,11 +35,9 @@ const Navbar = () => {
       <li>
         <Link
           to="/shop"
-          className={`${styles.navLink} ${
-            location.pathname === '/shop' ? styles.active : ''
-          }`}
-            aria-current={location.pathname === '/shop' ? 'page' : undefined}
-            aria-label="Go to Shop Page"
+          className={`${styles.navLink} ${location.pathname.startsWith('/shop') || location.pathname.startsWith('/product') ? styles.active : ''}`}
+            aria-current={location.pathname.startsWith('/shop') || location.pathname.startsWith('/product') ? 'page' : undefined}
+            aria-label="Navigate to the Shop Page (Includes Product Details)"
         >
           Shop
         </Link>

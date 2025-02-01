@@ -6,10 +6,6 @@ import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify"; 
 
-const handleAddToCart = () => {
-  addToCart(product, quantity);
-  toast.success(`${quantity} ${product.title} added to cart!`);
-};
 
 const ProductCard = ({ product, index }) => {
   const { addToCart } = useCart();
@@ -18,7 +14,12 @@ const ProductCard = ({ product, index }) => {
   const incrementQuantity = () => setQuantity(quantity + 1);
   const decrementQuantity = () =>
     setQuantity((prev) => Math.max(1, prev - 1));
-
+  
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    toast.success(`${quantity} ${product.title} added to cart!`);
+  };
+  
 
   const getOptimizedImageUrl = (url, width = 320) => {
     return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_${width},q_auto,f_webp/${encodeURIComponent(url)}`;

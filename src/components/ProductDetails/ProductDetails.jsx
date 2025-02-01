@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './ProductDetails.module.css';
-
+import { toast } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -14,20 +15,20 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
   const navigate = useNavigate();
-  const [feedbackMessage, setFeedbackMessage] = useState('');
- 
-
-const handleAddToCart = () => {
-    addToCart(product, quantity);
-    setFeedbackMessage('Added to Cart!');
-    setTimeout(() => setFeedbackMessage(''), 2000); // Clear message after 2 seconds
-};
-
-
+  
 
   if (!product) {
     return <p className={styles.errorMessage}>Product not found. Please try again.</p>;
   }
+
+  const handleAddToCart = () => {
+    console.log("handleAddToCart fired!");
+    console.log("Trying to fire toast notification...");
+    
+    console.log("Product being added:", product);
+    addToCart(product, quantity);
+    console.log("Quantity:", quantity);
+};
 
   const incrementQuantity = () => setQuantity(quantity + 1);
   const decrementQuantity = () => setQuantity((prev) => Math.max(1, prev - 1));
@@ -39,6 +40,7 @@ const handleAddToCart = () => {
 
   return (
     <>
+    
     <div className={styles.productDetailsPage}>
       <div className={styles.productContent}>
         {/* Left Column: Product Image */}
@@ -83,17 +85,16 @@ const handleAddToCart = () => {
             </button>
           </div>
           <button
-            onClick={handleAddToCart}
-             className={styles.addToCartButton}
-             aria-label={`Add ${quantity} of ${product.title} to cart`}
-          >
+           onClick={() => {
+            console.log("Button clicked! Running handleAddToCart...");
+            handleAddToCart();
+          }} 
+          className={styles.addToCartButton}
+          aria-label={`Add ${quantity} of ${product.title} to cart`}
+        >
             Add to Cart
           </button>
 
-          {/* Feedback Message with Reserved Space */}
-          <p className={styles.feedbackMessage} aria-live="polite" aria-atomic="true" role="status">
-            {feedbackMessage || <span>&nbsp;</span>} 
-          </p>
 
           <div className={styles.navigationButtons}>
             <button onClick={() => navigate('/shop')} className={styles.backButton}>
@@ -107,7 +108,17 @@ const handleAddToCart = () => {
       </div>
       
     </div>
-
+      <ToastContainer 
+          position="bottom-right" 
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+       />
     </>
   );
 };

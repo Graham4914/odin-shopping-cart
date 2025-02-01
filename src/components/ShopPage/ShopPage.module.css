@@ -3,7 +3,7 @@
   display: flex;
   max-width: 100%; /* Prevent horizontal overflow */
   flex-wrap: nowrap; /* Prevent wrapping */
-  padding: 0 20px;
+  padding: 0 2rem;
   overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
@@ -81,9 +81,10 @@
   padding: clamp(0.5rem, 2vw, 1rem) 0;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
-  margin: 20px ;
+  margin: 20px auto ;
   max-height: clamp(40px, 10vw, 80px); 
   overflow: hidden; 
+  width: 100%;
 }
 
 
@@ -100,6 +101,9 @@
   .shopPageHeader {
     max-height: 50px; 
     padding: 0.5rem;
+  }
+  .shopPage{
+    padding: 0 1rem;
   }
 }
 /* Product Grid */
