@@ -14,7 +14,7 @@
 
 .logoWrapper {
   display: flex;
-  flex: 1; /* Takes up equal space */
+  flex: 1; 
   justify-content: flex-start;
   align-items: center;
 }
@@ -89,5 +89,11 @@
 @media (max-width: 800px) {
   .navbar {
      padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .hideOnMobile {
+    visibility: hidden;
   }
 }

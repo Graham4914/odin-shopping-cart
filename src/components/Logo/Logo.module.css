@@ -12,9 +12,3 @@
     text-transform: uppercase;
   }
   
-  @media (max-width: 800px) {
-    .logo {
-       display: none;
-      
-    }
-  }

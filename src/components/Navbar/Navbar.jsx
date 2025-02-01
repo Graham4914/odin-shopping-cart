@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar} aria-label="Main site navigation" >
-      <div className={styles.logoWrapper}>
+      <div className={`${styles.logoWrapper} ${location.pathname.startsWith('/shop') ? styles.hideOnMobile : ''}`}>
        <Logo /> 
        </div>
 
