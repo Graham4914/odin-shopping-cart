@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import styles from './Footer.module.css';
 import { Link } from 'react-router-dom';
+import { FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -30,8 +31,22 @@ const Footer = () => {
   </a>
 </div>
       <div className={styles.footerBottom}>
-        <p>© 2025 Your Store. All rights reserved.</p>
+        <p>© 2025 G-Store. All rights reserved.</p>
       </div>
+             {/* GitHub Icon and Credit */}
+             <div className="styles.githubLink">
+        <a href="https://github.com/Graham4914/odin-shopping-cart"
+           target="_blank" 
+           rel="noopener noreferrer" 
+           aria-label="GitHub Profile"
+           className={styles.githubLink}
+           >
+
+          <FaGithub className={styles.githubIcon} />
+        </a>
+        <span className={styles.creditText}>by G Sharman</span>
+      </div>
+      
     </footer>
   );
 };

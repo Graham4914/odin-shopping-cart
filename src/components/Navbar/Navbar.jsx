@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { useCart } from '../../context/CartContext'; // Import CartContext
+import Logo from '../Logo/Logo';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -12,8 +13,12 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar} aria-label="Main site navigation" >
+      <div className={styles.logoWrapper}>
+       <Logo /> 
+       </div>
+
     {/* Navigation Links */}
-    <div className={styles.navCenter}>
+  
     <ul className={styles.navList}>
       <li>
         <Link
@@ -40,7 +45,9 @@ const Navbar = () => {
         </Link>
       </li>
     </ul>
-    </div>
+    
+
+    <div className={styles.cartWrapper}> 
     {/* Cart Icon */}
     <div className={styles.cartContainer}>
       <Link to="/cart" className={styles.cartLink}
@@ -49,6 +56,7 @@ const Navbar = () => {
         <FontAwesomeIcon icon={faShoppingCart} aria-hidden="true" />
         <span className={styles.cartCount} aria-hidden="true">{totalItems}</span>
       </Link>
+    </div>
     </div>
   </nav>
   

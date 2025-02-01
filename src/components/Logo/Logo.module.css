@@ -1,0 +1,20 @@
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem; /* Adjust size as needed */
+    height: 1.5rem;
+    border: 2px solid orange; /* Use your project's orange */
+    color: white; /* Change to orange if preferred */
+    font-weight: bold;
+    font-size: .8rem;
+    border-radius: 10%; /* Makes it a circle */
+    text-transform: uppercase;
+  }
+  
+  @media (max-width: 800px) {
+    .logo {
+       display: none;
+      
+    }
+  }
