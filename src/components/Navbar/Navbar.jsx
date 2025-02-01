@@ -13,6 +13,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar} aria-label="Main site navigation" >
     {/* Navigation Links */}
+    <div className={styles.navCenter}>
     <ul className={styles.navList}>
       <li>
         <Link
@@ -39,7 +40,7 @@ const Navbar = () => {
         </Link>
       </li>
     </ul>
-  
+    </div>
     {/* Cart Icon */}
     <div className={styles.cartContainer}>
       <Link to="/cart" className={styles.cartLink}

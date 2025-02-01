@@ -8,11 +8,14 @@ import { CartProvider } from './context/CartContext';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import styles from './App.module.css';
 import Footer from './components/Footer/Footer';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const App = () => {
   return (
     <CartProvider> {/* CartProvider wraps the entire app */}
     <Navbar />
+
+    <ScrollToTop />
      <div className={styles.appContainer}> {/* Flexbox container */}
         
         <main className={styles.mainContent}> {/* Main content area */}

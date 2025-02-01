@@ -1,7 +1,4 @@
 :root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -15,8 +12,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow:hidden; /* Prevent body from scrolling */
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   box-sizing: border-box;
 }
 
@@ -44,4 +40,14 @@ a:hover {
     font-size: 1rem;
     
   }
+}
+::-webkit-scrollbar {
+  width: 0px;  /* or 0 if you want to hide it entirely */
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.5);
+  border-radius: 5px;
 }

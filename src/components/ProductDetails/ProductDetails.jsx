@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import styles from './ProductDetails.module.css';
-
 
 
 
@@ -16,6 +15,7 @@ const ProductDetails = () => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const [feedbackMessage, setFeedbackMessage] = useState('');
+ 
 
 const handleAddToCart = () => {
     addToCart(product, quantity);
@@ -37,11 +37,6 @@ const handleAddToCart = () => {
   };
 
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  
   return (
     <>
     <div className={styles.productDetailsPage}>
