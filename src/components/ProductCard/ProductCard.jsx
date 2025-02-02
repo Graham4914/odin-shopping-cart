@@ -33,7 +33,7 @@ const ProductCard = ({ product, index }) => {
       <Link to={`/product/${product.id}`} state={{ product }} className={styles.productLink}>
       <div className={styles.productImageContainer}>
       <img 
-          src={getOptimizedImageUrl(product.image, 320)}
+          src={getOptimizedImageUrl(product.image, 320, "q_auto,f_avif")}
           width="280"
           height="210"
           alt={product.title}

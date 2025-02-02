@@ -1,12 +1,23 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
+  build: {
+    minify: 'terser',  // Enables JS minification
+    sourcemap: mode === 'development',  // Only generate sourcemaps in dev
+    rollupOptions: {
+      external: mode === 'production' ? ['react-devtools'] : [],
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'], // Splits vendor libraries
+        },
+      },
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/tests/setup.js',
   },
-})
+}));
