@@ -32,14 +32,14 @@ const ProductCard = ({ product, index }) => {
 
       <Link to={`/product/${product.id}`} state={{ product }} className={styles.productLink}>
       <div className={styles.productImageContainer}>
-      <img
-        src={getOptimizedImageUrl(product.image, 320)}
-        width="280" 
-        height="210" 
-        alt={product.title}
-        className={styles.productImage}
-        // loading={index === 2 ? "eager" : "lazy"}
-      />
+      <img 
+          src={getOptimizedImageUrl(product.image, 320)}
+          width="280"
+          height="210"
+          alt={product.title}
+          className={styles.productImage}
+          loading={product.image.includes("71li-ujtlUL._AC_UX679_") ? "eager" : "lazy"} 
+        />
       </div>
       <h2 id={`product-title-${product.id}`} className={styles.productTitle}>{product.title}</h2>
       <p className={styles.productPrice} aria-label={`Price: $${product.price.toFixed(2)}`}>
