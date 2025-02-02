@@ -32,9 +32,8 @@ const ProductCard = ({ product, index }) => {
       <div className={styles.productImageContainer}>
       <img
         src={getOptimizedImageUrl(product.image, 320)}
-        width="320" 
-        height="240" 
-        style={{ aspectRatio: "4 / 3" }}
+        width="280" 
+        height="210" 
         alt={product.title}
         className={styles.productImage}
         loading={index < 4 ? "eager" : "lazy"}
