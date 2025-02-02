@@ -4,7 +4,6 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
   build: {
-    minify: 'terser',  // Enables JS minification
     sourcemap: mode === 'development',  // Only generate sourcemaps in dev
     rollupOptions: {
       external: mode === 'production' ? ['react-devtools'] : [],
