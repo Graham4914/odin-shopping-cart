@@ -25,11 +25,7 @@ const ProductCard = ({ product, index }) => {
     return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_${width},q_auto,f_webp/${encodeURIComponent(url)}`;
   };
   
-  // const getOptimizedImageUrl = (url, width = 320) => {
-  //   return `https://res.cloudinary.com/djoyyyoxu/image/fetch/w_${width},h_${Math.round(
-  //     width * 0.75
-  //   )},q_auto,f_auto/${encodeURIComponent(url)}`;
-  // };
+
   
   return (
     <div className={styles.productCard} role="group" aria-labelledby={`product-title-${product.id}`}>
@@ -42,7 +38,7 @@ const ProductCard = ({ product, index }) => {
         height="210" 
         alt={product.title}
         className={styles.productImage}
-        loading={index === 0 ? "eager" : "lazy"}
+        loading={index < 5 ? "eager" : "lazy"}
       />
       </div>
       <h2 id={`product-title-${product.id}`} className={styles.productTitle}>{product.title}</h2>
