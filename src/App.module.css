@@ -9,4 +9,6 @@
   .mainContent {
     display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 160px); /* Adjust 150px based on header/footer height */
+    padding-bottom: 2rem; /* Ensures spacing from footer */
   }
