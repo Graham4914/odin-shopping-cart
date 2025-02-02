@@ -38,7 +38,7 @@ const ProductCard = ({ product, index }) => {
         height="210" 
         alt={product.title}
         className={styles.productImage}
-        loading={index === 2 ? "eager" : "lazy"}
+        // loading={index === 2 ? "eager" : "lazy"}
       />
       </div>
       <h2 id={`product-title-${product.id}`} className={styles.productTitle}>{product.title}</h2>
