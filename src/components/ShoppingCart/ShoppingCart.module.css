@@ -4,7 +4,6 @@
   justify-content: center; 
   padding: 2rem;
   background-color: #f9f9f9;
-  overflow-x: hidden;
 }
 
 .shoppingCartContent {
@@ -36,7 +35,11 @@
   grid-template-columns: 2fr 1fr; 
   gap: 2rem;
   box-sizing: border-box;
+  align-items: start; 
+  min-height: 100vh;
 }
+
+
 
 .cartList {
   flex: 2;
@@ -142,17 +145,22 @@
   color: darkred;
 }
 .summarySection {
-  flex: 1;
+  max-height: 350px;
   padding: 1.5rem;
   background-color: #ffffff;
   color: #222;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 20px; 
+  top: 100px; 
   align-self: start; 
   min-height: 150px;
+  overflow-y: auto;
+  overflow: visible;
+  margin-top: 1rem;
 }
+
+
 
 .summaryHeading {
   font-size: 1.5rem;
@@ -212,7 +220,7 @@
   }
 
   .checkoutButton {
-      width: 100%; /* Make checkout button full width */
+      width: 100%; 
   }
 }
 

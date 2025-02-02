@@ -3,12 +3,12 @@
     flex-direction: column;
     min-height: 100vh;
      overflow-y: auto; 
-    
+     overflow: visible;
   }
   
   .mainContent {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 160px); /* Adjust 150px based on header/footer height */
-    padding-bottom: 2rem; /* Ensures spacing from footer */
+    min-height: calc(100vh - 160px); 
+    padding-bottom: 2rem; 
   }
