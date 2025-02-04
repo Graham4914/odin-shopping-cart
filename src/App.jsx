@@ -1,3 +1,5 @@
+import { fetchProducts } from './utils/api';
+import { useEffect } from 'react';
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
@@ -12,6 +14,10 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+  useEffect(() => {
+    console.log("🔄 Prefetching products on homepage load...");
+    fetchProducts();
+  }, []);
   return (
     <CartProvider> 
     <Navbar />
